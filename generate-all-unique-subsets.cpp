@@ -18,7 +18,7 @@ void backtrack(vector<int> &nums,
 	}
 }
 
-vector<vector<int>> generate_all_subsets(vector<int> &nums){
+vector<vector<int>> generate_all_unique_subsets(vector<int> &nums){
 	vector<int> temp;
 	vector<vector<int>> result;
 	int start_level = 0;
@@ -30,7 +30,7 @@ vector<vector<int>> generate_all_subsets(vector<int> &nums){
 int main(){
 
 	vector<int> nums = { 1, 3, 3 };
-	vector<vector<int>> result = generate_all_subsets(nums);
+	vector<vector<int>> result = generate_all_unique_subsets(nums);
 
 	for (auto &row : result){
 		cout << "[ ";
@@ -40,3 +40,6 @@ int main(){
 		cout << " ]" << endl;
 	}
 }
+
+
+
