@@ -13,9 +13,9 @@ bool is_palindrome(string &str, int left, int right){
 }
 
 void backtrack(string &str,
-	vector<string> &temp,
-	vector<vector<string>> &result,
-	int start_level){
+			   vector<string> &temp,
+			   vector<vector<string>> &result,
+			   int start_level){
 	if (start_level == str.size()){
 		result.push_back(temp);
 	} else {
@@ -23,7 +23,7 @@ void backtrack(string &str,
 			bool is_substring_palindrome = is_palindrome(str, start_level, current_level);
 			if (is_substring_palindrome){
 				string current_substring = str.substr(start_level,
-				current_level - start_level + 1);
+													  current_level - start_level + 1);
 				temp.push_back(current_substring);
 				backtrack(str, temp, result, current_level + 1);
 				temp.pop_back();
