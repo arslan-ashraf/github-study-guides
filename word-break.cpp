@@ -45,6 +45,3 @@ int main(){
 	cout << "result: " << boolalpha << result << endl;
 
 }
-
-
-
