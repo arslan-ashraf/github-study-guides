@@ -14,11 +14,11 @@ bool backtrack(string &str,
 		return true;
 	} else {
 		for (int current_level = 0; current_level < str.length(); current_level++){
-			string substr = str.substr(0, current_level + 1);
-			if (word_set.find(substr) != word_set.end()){
-				string right_substr = str.substr(current_level + 1);
-				bool right_part = backtrack(right_substr, word_list, word_set, memo);
-				memo[right_substr] = right_part;
+			string left_substring = str.substr(0, current_level + 1);
+			if (word_set.find(left_substring) != word_set.end()){
+				string right_substring = str.substr(current_level + 1);
+				bool right_part = backtrack(right_substring, word_list, word_set, memo);
+				memo[right_substring] = right_part;
 				if (right_part == true) return true;
 			}
 		}
@@ -45,5 +45,6 @@ int main(){
 	cout << "result: " << boolalpha << result << endl;
 
 }
+
 
 
