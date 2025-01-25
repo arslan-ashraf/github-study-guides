@@ -1,9 +1,14 @@
 function next_permutation(arr){
 	let pivot_index = find_pivot(arr)
+
+	// pivot_index is negative only if the array is fully 
+	// sorted in descending order
 	if (pivot_index < 0) return arr.reverse()
+
 	let pivot_successor_index = find_pivot_successor(arr, pivot_index)
 	swap(arr, pivot_index, pivot_successor_index)
 	reverse_right_part(arr, pivot_index + 1)
+
 	return arr
 }
 
