@@ -7,7 +7,8 @@ function jump_game_II(arr){
 	let jumps = 0
 
 	while(current_level < destination){
-		furthest_jump = Math.max(furthest_jump, arr[current_level] + current_level)
+		furthest_jump = Math.max(furthest_jump, 
+							     current_level + arr[current_level])
 		if (current_level == next_level){
 			jumps += 1
 			next_level = furthest_jump
