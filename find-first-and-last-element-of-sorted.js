@@ -11,12 +11,14 @@ function find_left_right_index(arr, target, search_side){
     while (left <= right){
         let middle = Math.floor((left + right)/2)
         if (arr[middle] == target) {
+            // only two changes from standard binary search
             extreme_index = middle
             if (search_side == "left"){
                 right = middle - 1
             } else if (search_side == "right"){
                 left = middle + 1
             } 
+            // end of change from standard binary search
         } else if (arr[middle] > target) {
             right = middle - 1
         } else if (arr[middle] < target){
