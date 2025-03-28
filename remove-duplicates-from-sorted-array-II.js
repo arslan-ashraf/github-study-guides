@@ -8,7 +8,7 @@ function remove_duplicates_from_sorted_array_II(arr, d = 2){
             right += 1
             dup_count += 1
         } 
-        for (let i = 0; i <= Math.min(d, dup_count); i++){
+        for (let i = 0; i < Math.min(d, dup_count); i++){
             arr[left] = arr[right]
             left += 1
         }
