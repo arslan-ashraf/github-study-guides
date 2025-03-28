@@ -1,67 +1,67 @@
-function search_sorted_range(nums, target) {
-    let left_index = find_left_right_index(nums, target, "left")
-    let right_index = find_left_right_index(nums, target, "right")
+function search_sorted_range(arr, target) {
+    let left_index = find_left_right_index(arr, target, "left")
+    let right_index = find_left_right_index(arr, target, "right")
     return [left_index, right_index]
 }
 
-function find_left_right_index(nums, target, search_side){
+function find_left_right_index(arr, target, search_side){
     let extreme_index = -1
     let left = 0
-    let right = nums.length - 1
+    let right = arr.length - 1
     while (left <= right){
         let middle = Math.floor((left + right)/2)
-        if (nums[middle] == target) {
+        if (arr[middle] == target) {
             extreme_index = middle
             if (search_side == "left"){
                 right = middle - 1
             } else if (search_side == "right"){
                 left = middle + 1
             } 
-        } else if (nums[middle] > target) {
+        } else if (arr[middle] > target) {
             right = middle - 1
-        } else if (nums[middle] < target){
+        } else if (arr[middle] < target){
             left = middle + 1
         }
     }
     return extreme_index
 }
 
-// function search_sorted_range(nums, target) {
-//     let left_index = find_left_index(nums, target)
-//     let right_index = find_right_index(nums, target)
+// function search_sorted_range(arr, target) {
+//     let left_index = find_left_index(arr, target)
+//     let right_index = find_right_index(arr, target)
 //     return [left_index, right_index]
 // }
 
-// function find_left_index(nums, target){
+// function find_left_index(arr, target){
 //     let left_most_index = -1
 //     let left = 0
-//     let right = nums.length - 1
+//     let right = arr.length - 1
 //     while (left <= right){
 //         let middle = Math.floor((left + right)/2)
-//         if (nums[middle] == target) {
+//         if (arr[middle] == target) {
 //             left_most_index = middle
 //             right = middle - 1
-//         } else if (nums[middle] > target){
+//         } else if (arr[middle] > target){
 //             right = middle - 1
-//         } else if (nums[middle] < target) {
+//         } else if (arr[middle] < target) {
 //             left = middle + 1
 //         }
 //     }
 //     return left_most_index
 // }
 
-// function find_right_index(nums, target){
+// function find_right_index(arr, target){
 //     let right_most_index = -1
 //     let left = 0
-//     let right = nums.length - 1
+//     let right = arr.length - 1
 //     while (left <= right){
 //         let middle = Math.floor((left + right)/2)
-//         if (nums[middle] == target) {
+//         if (arr[middle] == target) {
 //             right_most_index = middle
 //             left = middle + 1
-//         } else if (nums[middle] > target) {
+//         } else if (arr[middle] > target) {
 //             right = middle - 1
-//         } else if (nums[middle] < target){
+//         } else if (arr[middle] < target){
 //             left = middle + 1
 //         }
 //     }
