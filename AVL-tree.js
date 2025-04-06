@@ -28,10 +28,10 @@ class AVL_Tree {
 			}
 		} else if (balance > 1){
 			if (this.get_height(tree.left.left) >= this.get_height(tree.left.right)){
-				tree = rotate_right(tree)
+				tree = this.rotate_right(tree)
 			} else {
-				tree.left = rotate_left(tree.left)
-				tree = rotate_right(tree)
+				tree.left = this.rotate_left(tree.left)
+				tree = this.rotate_right(tree)
 			}
 		} else {
 			tree.height = this.set_height(tree)
@@ -49,10 +49,11 @@ class AVL_Tree {
 			tree.value = tmp
 			tree.right = this.remove(tree.right, tmp)
 		} else if (tree.value > value){
-			tree.left = this.remove(tree.left)
+			tree.left = this.remove(tree.left, value)
 		} else {
-			tree.right = this.remove(tree.right)
+			tree.right = this.remove(tree.right, value)
 		}
+		return tree
 	}
 	
 	rotate_left(tree){
@@ -91,14 +92,35 @@ class AVL_Tree {
 		}
 		return tree.value
 	}
+
+	inorder_traversal(tree){
+		if (!tree) return
+		this.inorder_traversal(tree.left)
+		console.log(tree.value + " ")
+		this.inorder_traversal(tree.right)
+	}
+
+	preorder_traversal(tree){
+		if (!tree) return
+		console.log(tree.value + " ")
+		this.preorder_traversal(tree.left)
+		this.preorder_traversal(tree.right)
+	}
 }
 
 let tree = null
 let avl_tree = new AVL_Tree()
+tree = avl_tree.insert(tree, 10)
+tree = avl_tree.insert(tree, 9)
+tree = avl_tree.insert(tree, 8)
 tree = avl_tree.insert(tree, 1)
 tree = avl_tree.insert(tree, 2)
 tree = avl_tree.insert(tree, 3)
-
+tree = avl_tree.insert(tree, 4)
+tree = avl_tree.insert(tree, 5)
+tree = avl_tree.insert(tree, 6)
+tree = avl_tree.insert(tree, 7)
+tree = avl_tree.insert(tree, 0)
 
 // a negative balance indicates that the right subtree has too
 // many nodes and has the following shape:
