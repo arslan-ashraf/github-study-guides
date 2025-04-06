@@ -62,3 +62,19 @@ Node* insert(Node *tree, int value){
 	return tree;
 }
 
+Node* remove(Node *tree, int value){
+	if (!tree) return NULL;
+	if (!tree->left && !tree->right) return NULL;
+	if (!tree->left) return tree->right;
+	if (!tree->right) return tree-> left;
+	if (tree->value == value){
+		int temp = get_min(tree->right);
+		tree->value = temp;
+		tree->right = remove(tree->right, temp);
+	} else if (tree->value > value){
+		tree->left = remove(tree->left, value);
+	} else {
+		tree->right = remove(tree->right, value);
+	}
+	return tree;
+}
