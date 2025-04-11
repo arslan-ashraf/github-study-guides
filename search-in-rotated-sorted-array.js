@@ -20,7 +20,7 @@ function search_rotated(arr, target) {
             } else {
                 right = middle - 1
             }
-        } else { // array/subarray is fully sorted, standard binary search
+        } else { // Case 3: array/subarray is properly sorted, standard binary search
             if (target > arr[middle]){
                 left = middle + 1
             } else {
