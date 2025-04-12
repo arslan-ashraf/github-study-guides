@@ -7,9 +7,10 @@ function three_sum(arr) {
         let left = idx_1 + 1
         let right = arr.length - 1
         while (left < right){
-            if (arr[idx_1] + arr[left] + arr[right] < 0){
+            let _three_sum = arr[idx_1] + arr[left] + arr[right]
+            if (_three_sum < 0){
                 left += 1
-            } else if (arr[idx_1] + arr[left] + arr[right] > 0){
+            } else if (_three_sum > 0){
                 right -= 1
             } else {
                 result.push([arr[idx_1], arr[left], arr[right]])
