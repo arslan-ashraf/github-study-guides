@@ -3,45 +3,45 @@ function fake_min_heap(arr){
 	arr.sort((a, b) => b[1] - a[1])
 }
 
-function dijkstras_shortest_path(graph, start_node) {
+function dijkstras_shortest_path(graph, start_vertex) {
 	
-	// distances stores the shortest path from start node to all other nodes
+	// distances stores the shortest path from start vertex to all other vertexs
 	let distances = {}
 
-	// a map to keep tract of all visited nodes
+	// a map to keep tract of all visited vertexs
 	let visited = {}
 
-	// a map to keep track of which node was visited from which node
+	// a map to keep track of which vertex was visited from which vertex
 	let visited_from = {}
 
-	// set the initial distance of every node from start node to infinity
-	for (let node in graph) {
-		distances[node] = 1/0
-		visited[node] = false
-		visited_from[node] = null
+	// set the initial distance of every vertex from start vertex to infinity
+	for (let vertex in graph) {
+		distances[vertex] = 1/0
+		visited[vertex] = false
+		visited_from[vertex] = null
 	}
 
-	distances[start_node] = 0
-	visited_from[start_node] = start_node
+	distances[start_vertex] = 0
+	visited_from[start_vertex] = start_vertex
 
-	let min_heap = [[start_node, 0]]
+	let min_heap = [[start_vertex, 0]]
 
 	while (min_heap.length > 0) {
 
 		let min_heap_top = min_heap.pop()
-		let current_node = min_heap_top[0]
-		let current_node_distance = min_heap_top[1]
-		visited[current_node] = true
+		let current_vertex = min_heap_top[0]
+		let current_vertex_distance = min_heap_top[1]
+		visited[current_vertex] = true
 		
-		for (let neighbor in graph[current_node]){
+		for (let neighbor in graph[current_vertex]){
 
-			let neighbors_distance_to_current_node = graph[current_node][neighbor]
-			let total_distance = current_node_distance + neighbors_distance_to_current_node
+			let neighbors_distance_to_current_vertex = graph[current_vertex][neighbor]
+			let total_distance = current_vertex_distance + neighbors_distance_to_current_vertex
 
 			if (!visited[neighbor] && total_distance < distances[neighbor]){
 				min_heap.push([neighbor, total_distance])
 				distances[neighbor] = total_distance
-				visited_from[neighbor] = current_node
+				visited_from[neighbor] = current_vertex
 			}
 		}
 
@@ -50,7 +50,7 @@ function dijkstras_shortest_path(graph, start_node) {
 	}
 
 	console.log("minimum distances\n", distances)
-	console.log("nodes visited from\n", visited_from)
+	console.log("vertexs visited from\n", visited_from)
 	return [distances, visited_from]
 }
 
