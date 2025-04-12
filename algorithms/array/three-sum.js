@@ -2,6 +2,7 @@ function three_sum(arr) {
     let result = []
     arr = arr.sort((a, b) => a - b)
     for (let idx_1 = 0; idx_1 < arr.length; idx_1++){
+        // filter out duplicates of first index
         if (idx_1 > 0 && arr[idx_1] == arr[idx_1 - 1]) continue
         let left = idx_1 + 1
         let right = arr.length - 1
@@ -12,6 +13,7 @@ function three_sum(arr) {
                 right -= 1
             } else {
                 result.push([arr[idx_1], arr[left], arr[right]])
+                // filter out duplicates on second and third indices
                 while (left < right && arr[left] == arr[left + 1]){ left += 1 }
                 while (left < right && arr[right] == arr[right - 1]){ right -= 1 }
                 left += 1
