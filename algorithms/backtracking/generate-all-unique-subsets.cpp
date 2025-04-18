@@ -7,13 +7,14 @@ using namespace std;
 void backtrack(vector<int> &nums, 
 			   vector<int> &temp,
 			   vector<vector<int>> &result,
-			   int start_level){
+			   int current_level){
 	result.push_back(temp);
-
-	for (int current_level = start_level; current_level < nums.size(); current_level++){
-		if (current_level > start_level && nums[current_level] == nums[current_level-1]) continue;
-		temp.push_back(nums[current_level]);
-		backtrack(nums, temp, result, current_level + 1);
+	
+	int start_branch = current_level
+	for (int current_branch = start_branch; current_branch < nums.size(); current_branch++){
+		if (current_branch > start_branch && nums[current_branch] == nums[current_branch - 1]) continue;
+		temp.push_back(nums[current_branch]);
+		backtrack(nums, temp, result, current_branch + 1);
 		temp.pop_back();
 	}
 }
@@ -21,9 +22,9 @@ void backtrack(vector<int> &nums,
 vector<vector<int>> generate_all_unique_subsets(vector<int> &nums){
 	vector<int> temp;
 	vector<vector<int>> result;
-	int start_level = 0;
+	int current_level = 0;
 	std::sort(nums.begin(), nums.end());
-	backtrack(nums, temp, result, start_level);
+	backtrack(nums, temp, result, current_level);
 	return result;
 }
 

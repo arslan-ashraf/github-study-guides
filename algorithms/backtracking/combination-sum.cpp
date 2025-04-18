@@ -8,11 +8,12 @@ void backtrack(vector<int> &nums,
 			   int target,
 			   vector<int> &temp,
 			   vector<vector<int>> &result,
-			   int start_level){
+			   int current_level){
 	if (target == 0){
 		result.push_back(temp);
 	} else if (target > 0) {
-		for (int current_level = start_level; current_level < nums.size(); current_level++){
+		int start_branch = current_level
+		for (int current_level = start_branch; current_level < nums.size(); current_level++){
 			temp.push_back(nums[current_level]);
 			backtrack(nums, target - nums[current_level], temp, result, current_level);
 			temp.pop_back();
@@ -23,9 +24,9 @@ void backtrack(vector<int> &nums,
 vector<vector<int>> combination_sum(vector < int > &nums, int target){
 	vector<int> temp;
 	vector<vector<int>> result;
-	int start_level = 0;
+	int current_level = 0;
 	std::sort(nums.begin(), nums.end(), std::greater());
-	backtrack(nums, target, temp, result, start_level);
+	backtrack(nums, target, temp, result, current_level);
 	return result;
 }
 
