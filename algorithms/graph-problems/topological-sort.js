@@ -1,25 +1,27 @@
+// note the start vertex is arbitrary and for convenience
+
 function topological_sort(graph, start_vertex){
-	let visited = new Set()
+	let visited_set = new Set()
 	let stack = []
 
 	for (let node in graph) {
-		if (!visited.has(node)) {
-		  dfs(node)
+		if (!visited_set.has(node)) {
+		  dfs(node, visited_set, stack)
 		}
 	}
   return stack.reverse()
 }
 
-function dfs(node) {
-    visited.add(node)
+function dfs(node, visited_set, stack){
+    visited_set.add(node)
 
-    for (let neighbor of graph[node] || []) {
-		if (!visited.has(neighbor)) {
-		dfs(neighbor)
+    for (let neighbor in graph[node]) {
+		if (!visited_set.has(neighbor)) {
+			dfs(neighbor, visited_set, stack)
 		}
     }
     stack.push(node)
-  }
+ }
 
 let graph = {
 	"A": { "B": 3, "D": 1, "F": 5},
@@ -36,3 +38,7 @@ let graph = {
 	"L": {},
 	"M": { "K": 6 }
 }
+
+// returns ['A', 'D', 'F', 'M', 'B', 'C', 'E', 'G', 'H', 'K', 'I', 'L', 'J']
+let result = topological_sort(graph, "A")
+console.log(result)
