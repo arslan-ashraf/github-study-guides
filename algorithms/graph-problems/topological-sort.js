@@ -4,23 +4,23 @@ function topological_sort(graph, start_vertex){
 	let visited_set = new Set()
 	let stack = []
 
-	for (let node in graph) {
-		if (!visited_set.has(node)) {
-		  dfs(node, visited_set, stack)
+	for (let vertex in graph) {
+		if (!visited_set.has(vertex)) {
+		  dfs(vertex, visited_set, stack)
 		}
 	}
   return stack.reverse()
 }
 
-function dfs(node, visited_set, stack){
-    visited_set.add(node)
+function dfs(vertex, visited_set, stack){
+    visited_set.add(vertex)
 
-    for (let neighbor in graph[node]) {
+    for (let neighbor in graph[vertex]) {
 		if (!visited_set.has(neighbor)) {
 			dfs(neighbor, visited_set, stack)
 		}
     }
-    stack.push(node)
+    stack.push(vertex)
  }
 
 let graph = {
