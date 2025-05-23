@@ -1,5 +1,24 @@
-function detect_cycle_in_graph(graph){
-	
+function detect_cycle_in_graph(graph, start_vertex){
+	let visit_status = {} // 0 = unvisited, 1 = visiting, 2 = visited
+	// set visit status of all vertices to unvisited (or 0)
+	for (let vertex in graph){
+		visit_status[vertex] = 0
+	}
+	let cycle_detected = dfs(graph, start_vertex, visit_status)
+	return cycle_detected
+}
+
+function dfs(graph, vertex, visit_status){
+	visit_status[vertex] = 1
+	for (let neighbor in graph[vertex]){
+		// do not revisit already visited vertices and paths
+		if (visit_status[vertex] == 2) continue 
+		// found path which returns to a currently visiting vertex
+		if (visit_status[neighbor] == 1) return true
+		return dfs(graph, neighbor, visit_status)
+	}
+	visit_status[vertex] = 2
+	return false
 }
 
 let cyclic_graph = {
@@ -17,3 +36,6 @@ let cyclic_graph = {
 	"L": {},
 	"M": { "K": 6 }
 }
+
+// start vertex "A" is arbitrary and for convenience
+console.log(detect_cycle_in_graph(cyclic_graph, "A"))
