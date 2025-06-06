@@ -1,5 +1,6 @@
 function fake_min_heap(arr){
-	// sort in descending order for quick pop
+	// sorts array in descending order so the minimum element
+	// is at the end of the array, this is done for a quick pop()
 	arr.sort((a, b) => b[1] - a[1])
 }
 
@@ -30,13 +31,15 @@ function dijkstras_shortest_path(graph, start_vertex) {
 
 		let min_heap_top = min_heap.pop()
 		let current_vertex = min_heap_top[0]
-		let current_vertex_distance = min_heap_top[1]
+		// distance_to_current_vertex is the total distance to get to 
+		// the current vertex from the starting vertex
+		let distance_to_current_vertex = min_heap_top[1]
 		visited[current_vertex] = true
 		
 		for (let neighbor in graph[current_vertex]){
 
 			let neighbors_distance_to_current_vertex = graph[current_vertex][neighbor]
-			let total_distance = current_vertex_distance + neighbors_distance_to_current_vertex
+			let total_distance = distance_to_current_vertex + neighbors_distance_to_current_vertex
 
 			if (!visited[neighbor] && total_distance < distances[neighbor]){
 				min_heap.push([neighbor, total_distance])
