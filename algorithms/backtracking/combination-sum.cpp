@@ -13,9 +13,9 @@ void backtrack(vector<int> &nums,
 		result.push_back(temp);
 	} else if (target > 0) {
 		int start_branch = current_level
-		for (int current_level = start_branch; current_level < nums.size(); current_level++){
-			temp.push_back(nums[current_level]);
-			backtrack(nums, target - nums[current_level], temp, result, current_level);
+		for (int current_branch = start_branch; current_branch < nums.size(); current_branch++){
+			temp.push_back(nums[current_branch]);
+			backtrack(nums, target - nums[current_branch], temp, result, current_branch);
 			temp.pop_back();
 		}
 	}
