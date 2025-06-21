@@ -1,23 +1,16 @@
-function swap_nodes_in_pairs(head){
-    let list = head
-    let odd_list = new ListNode(0), even_list = new ListNode(0)
-    let odd_list_ptr1 = odd_list, odd_list_ptr2 = odd_list
-    let even_list_ptr1 = even_list, even_list_ptr2 = even_list
-    while (list){
-        odd_list.next = list
-        list = list.next
-        odd_list = odd_list.next
-        if (list){
-            even_list.next = list
-            list = list.next
-            even_list = even_list.next
-        }
+function swap_nodes_in_pairs(list){
+    let new_list = new ListNode(0)
+    new_list.next = list
+    let previous_node = new_list
+    let current_node = list
+
+    while (current_node && current_node.next){
+        let new_node = current_node.next
+        current_node.next = new_node.next
+        new_node.next = current_node
+        previous_node.next = new_node
+        previous_node = current_node
+        current_node = current_node.next
     }
-    odd_list_ptr1 = odd_list_ptr1.next
-    even_list_ptr1 = even_list_ptr1.next
-    while (odd_list_ptr1){
-        let temp = even_list_ptr1.next
-        even_list_ptr1.next = odd_list_ptr1
-        odd_list_ptr1.next = temp
-    }
+    return new_list.next
 }
