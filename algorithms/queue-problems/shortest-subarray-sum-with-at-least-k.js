@@ -67,3 +67,4 @@ console.log(shortest_subarray_with_sum_at_least_k([1, 2, -4, 3, -6, 99, -1], 103
 console.log(shortest_subarray_with_sum_at_least_k([-28, 81,-20, 28,-29], 89) == 3)
 let long_input = [-34, 37, 51, 3, -12, -50, 51, 100, -47, 99, 34, 14, -13, 89, 31, -14, -44, 23, -38, 6]
 console.log(shortest_subarray_with_sum_at_least_k(long_input, 151) == 2) // fails here, returns 3
+
