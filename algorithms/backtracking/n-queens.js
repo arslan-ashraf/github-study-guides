@@ -1,26 +1,35 @@
 function n_queens(n){
-	let result = [], temp = new Array(n)
-	backtrack(result, temp, 0)
+	let row_str = ".".repeat(n)
+	let result = [], temp_board = new Array(n)
+	let board = []
+	backtrack(result, board, temp_board, row_str, 0)
 	return result
 }
 
-function backtrack(result, temp, index){
-	if (index == temp.length){
-		result.push(temp.slice(0)) // or result.push([...temp])
+function backtrack(result, board, temp_board, row_str, current_row_index){
+	if (current_row_index == temp_board.length){
+		result.push([...board])
 		return
 	}
-	for(let i = 0; i < temp.length; i++){
-		temp[index] = "Q"
-		if (valid_position(temp, index)){
-			backtrack(result, temp, flip_switch, index + 1)
+	for(let queen_position = 0; queen_position < temp_board.length; queen_position++){
+		temp_board[current_row_index] = queen_position
+		if (is_valid_position(temp_board, current_row_index)){
+			let row_with_queen = row_str.slice(0, queen_position) + "Q" + row_str.slice(queen_position + 1)
+			board.push(row_with_queen)
+			backtrack(result, board, temp_board, row_str, current_row_index + 1)
+			board.pop()
 		}
 	}
 }
 
-function valid_position(temp, index){
-	for(let i = 0; i < index; i++){
-		if (temp[i] == temp[index] ||
-			Math.abs(temp[i] - temp[index]) == Math.abs(index - i)){
+function is_valid_position(temp_board, current_row_index){
+	for(let row_index = 0; row_index < current_row_index; row_index++){
+		
+		let diagonal_queen_placement = Math.abs(temp_board[row_index] - temp_board[current_row_index])
+		let diagonal_position_difference = Math.abs(row_index - current_row_index)
+		
+		if (temp_board[row_index] == temp_board[current_row_index] ||	// vertical attack
+			diagonal_queen_placement == diagonal_position_difference){	// diagnoal attack
 				return false 
 			}
 	}
