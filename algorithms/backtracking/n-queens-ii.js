@@ -1,13 +1,15 @@
 function n_queens_ii(n){
-	let result = 0, temp_board = new Array(n)
+	let result = [0], temp_board = new Array(n)
 	let board = []
 	backtrack(result, board, temp_board, 0)
-	return result
+	return result[0][0] || 0
 }
 
 function backtrack(result, board, temp_board, current_row_index){
 	if (current_row_index == temp_board.length){
-		result += 1
+		let previous_count = Number(result.pop())
+		let new_count = [previous_count + 1]
+		result.push([...new_count])
 		return
 	}
 	for(let queen_position = 0; queen_position < temp_board.length; queen_position++){
