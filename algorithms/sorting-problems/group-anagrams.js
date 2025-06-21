@@ -21,3 +21,10 @@ let input = ["eat","tea","tan","ate","nat","bat"]
 let output = [["bat"],["nat","tan"],["ate","eat","tea"]]
 
 console.log(group_anagrams(input))
+
+
+
+
+
+
+

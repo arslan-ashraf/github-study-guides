@@ -1,16 +1,14 @@
 function swap_nodes_in_pairs(list){
-    let new_list = new ListNode(0)
-    new_list.next = list
-    let previous_node = new_list
-    let current_node = list
-
-    while (current_node && current_node.next){
-        let new_node = current_node.next
-        current_node.next = new_node.next
-        new_node.next = current_node
-        previous_node.next = new_node
-        previous_node = current_node
-        current_node = current_node.next
+    let dummy = new ListNode(0)
+    dummy.next = list
+    let current_node = dummy
+    while (current_node.next && current_node.next.next){
+        let node_a = current_node.next
+        let node_b = current_node.next.next
+        node_a.next = node_b.next
+        current_node.next = node_b
+        current_node.next.next = node_a
+        current_node = current_node.next.next
     }
-    return new_list.next
+    return dummy.next
 }
