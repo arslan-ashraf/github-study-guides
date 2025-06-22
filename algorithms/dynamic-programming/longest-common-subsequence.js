@@ -13,3 +13,6 @@ function longest_common_subsequence(str_a, str_b){
 	}
 	return dp[n][m]
 }
+
+console.log(longest_common_subsequence("abcde", "ace") == 3)
+console.log(longest_common_subsequence("abcdefghisj", "acdesxj") == 6)
