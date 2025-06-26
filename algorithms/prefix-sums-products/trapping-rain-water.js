@@ -1,4 +1,4 @@
-// O(n^2)
+// time: O(n^2), space: O(1)
 function trapping_rain_water_1(heights){
 	let total_volume = 0
 	let left_largest_height = 0
@@ -34,6 +34,7 @@ function trapping_rain_water_1(heights){
 console.log(trapping_rain_water_1([2, 1, 4, 2, 1, 0, 3, 2, 1, 5, 0, 4]) == 20)
 
 
+// time: O(n), space: O(n)
 function trapping_rain_water_2(heights){
 	let total_volume = 0, n = heights.length
 	let left_largest_heights = new Array(n)
