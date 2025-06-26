@@ -32,3 +32,31 @@ function trapping_rain_water_1(heights){
 
 
 console.log(trapping_rain_water_1([2, 1, 4, 2, 1, 0, 3, 2, 1, 5, 0, 4]) == 20)
+
+
+function trapping_rain_water_2(heights){
+	let total_volume = 0
+	let n = heights.length
+	let left_largest_heights = new Array(n)
+	let right_largest_heights = new Array(n)
+	left_largest_heights[0] = heights[0]
+	right_largest_heights[n - 1] = heights[n - 1]
+	for (let i = 1; i < heights.length; i++){
+		left_largest_heights[i] = Math.max(left_largest_heights[i - 1], heights[i])
+	}
+
+	for(let i = n - 2; i >= 0; i--){
+		right_largest_heights[i] = Math.max(right_largest_heights[i + 1], heights[i])
+	}
+
+	console.log(left_largest_heights)
+    console.log(right_largest_heights)
+
+	for(let i = 0; i < heights.length; i++){
+		let max_usable_height = Math.min(left_largest_heights[i], right_largest_heights[i])
+		total_volume += max_usable_height - heights[i]
+	}
+	return total_volume
+}
+
+console.log(trapping_rain_water_2([2, 1, 4, 2, 1, 0, 3, 2, 1, 5, 0, 4]) == 20)
