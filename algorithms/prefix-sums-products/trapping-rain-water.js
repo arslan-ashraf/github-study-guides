@@ -35,22 +35,21 @@ console.log(trapping_rain_water_1([2, 1, 4, 2, 1, 0, 3, 2, 1, 5, 0, 4]) == 20)
 
 
 function trapping_rain_water_2(heights){
-	let total_volume = 0
-	let n = heights.length
+	let total_volume = 0, n = heights.length
 	let left_largest_heights = new Array(n)
 	let right_largest_heights = new Array(n)
 	left_largest_heights[0] = heights[0]
 	right_largest_heights[n - 1] = heights[n - 1]
+
+	// prefill the monotonically increasing heights from left to right
 	for (let i = 1; i < heights.length; i++){
 		left_largest_heights[i] = Math.max(left_largest_heights[i - 1], heights[i])
 	}
 
+	// prefill the monotonically increasing heights from right to left
 	for(let i = n - 2; i >= 0; i--){
 		right_largest_heights[i] = Math.max(right_largest_heights[i + 1], heights[i])
 	}
-
-	console.log(left_largest_heights)
-    console.log(right_largest_heights)
 
 	for(let i = 0; i < heights.length; i++){
 		let max_usable_height = Math.min(left_largest_heights[i], right_largest_heights[i])
@@ -59,4 +58,7 @@ function trapping_rain_water_2(heights){
 	return total_volume
 }
 
+
+// left_largest_heights =  [2, 2, 4, 4, 4, 4, 4, 4, 4, 5, 5, 5]
+// right_largest_heights = [5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 4, 4]
 console.log(trapping_rain_water_2([2, 1, 4, 2, 1, 0, 3, 2, 1, 5, 0, 4]) == 20)
