@@ -27,9 +27,9 @@ console.log(unique_ways_backtrack(3, 4) == 10)
 function unique_ways_dp(n, k){
 	let dp = new Array(n).fill().map(() => new Array(k))
 
-	dp[0][0] = 0
-	for (let i = 0; i < n; i++){ dp[i][0] = 1 }
-	for (let j = 0; j < k; j++){ dp[0][j] = 1 }
+	dp[0][0] = 1
+	for (let i = 1; i < n; i++){ dp[i][0] = 1 }
+	for (let j = 1; j < k; j++){ dp[0][j] = 1 }
 
 	for (let i = 1; i < n; i++){
 		for(let j = 1; j < k; j++){
