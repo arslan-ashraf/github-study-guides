@@ -1,24 +1,24 @@
 function longest_common_subsequence_backtracking(str_a, str_b){
-	let result = [0]
-	backtrack(str_a, str_b, result, 0)
-	return result[0]
+	let result = backtrack(str_a, str_b, {}, 0, 0)
+	return result
 }
 
-function backtrack(str_a, str_b, result, common_length){
-	if (str_a.length > 0 && str_b.length == 0 ||
-		str_a.length == 0 && str_b.length > 0){
+function backtrack(str_a, str_b, memo, i, j){
+	console.log(memo)
+	if (memo[String(i) + "," + String(j)]) return memo[String(i) + "," + String(j)]
+	if (i == str_a.length || j == str_b.length){
 		return 0
-	} else if (str_a.length == 0 && str_b.length == 0){
-		let count = Number(result.pop())
-		count = [Math.max(count, common_length)]
-		result.push(...count)
+	}
+	if (str_a[i] == str_b[j]){	
+		let remaining_subsequence_match = backtrack(str_a, str_b, memo, i + 1, j + 1)
+		memo[String(i) + "," + String(j)] = remaining_subsequence_match + 1
+		return remaining_subsequence_match + 1
 	} else {
-		if (str_a[0] == str_b[0]){	
-			backtrack(str_a.substring(1), str_b.substring(1), result, common_length + 1)
-		} else {
-			backtrack(str_a.substring(1), str_b, result, common_length)
-			backtrack(str_a, str_b.substring(1), result, common_length)
-		}
+		let left_remaining_match = backtrack(str_a, str_b, memo, i + 1, j)
+		let right_remaining_match = backtrack(str_a, str_b, memo, i, j + 1)
+		let largest_matching = Math.max(left_remaining_match, right_remaining_match)
+		memo[String(i) + "," + String(j)] = largest_matching
+		return largest_matching
 	}
 }
 
