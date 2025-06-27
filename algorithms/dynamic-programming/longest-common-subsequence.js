@@ -4,7 +4,7 @@ function longest_common_subsequence_backtracking(str_a, str_b){
 }
 
 function backtrack(str_a, str_b, memo, i, j){
-	console.log(memo)
+	// console.log(memo)
 	if (memo[String(i) + "," + String(j)]) return memo[String(i) + "," + String(j)]
 	if (i == str_a.length || j == str_b.length){
 		return 0
