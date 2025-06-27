@@ -34,3 +34,24 @@ let matrix1 = [
 
 console.log(minimum_path_sum_backtracking(matrix1) == 10)
 console.log(minimum_path_sum_backtracking(matrix) == 14)
+
+
+function minimum_path_sum_dp(matrix){
+	let n = matrix.length, m = matrix[0].length
+	let dp = new Array(n).fill().map(() => new Array())
+	dp[0][0] = matrix[0][0]
+	for (let i = 1; i < n; i++){ dp[i][0] = dp[i - 1][0] + matrix[i][0] }
+	for (let j = 1; j < m; j++){ dp[0][j] = dp[0][j - 1] + matrix[0][j] }
+	
+	for (let i = 1; i < n; i++){
+		for (let j = 1; j < m; j++){
+			dp[i][j] = Math.min(dp[i - 1][j], dp[i][j - 1]) + matrix[i][j]
+		}
+	}
+
+	// console.log(dp)
+	return dp[n - 1][m - 1]
+}
+
+console.log(minimum_path_sum_dp(matrix1) == 10)
+console.log(minimum_path_sum_dp(matrix) == 14)
