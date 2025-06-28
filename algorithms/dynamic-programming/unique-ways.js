@@ -1,19 +1,16 @@
 function unique_ways_backtracking(n, k){
-	let total_count = [0]
-	dfs(n, k, total_count, 1, 1)
-	return total_count[0]
+	return dfs(n, k, 1, 1)
 }
 
-function dfs(n, k, total_count, current_row, current_column){
+function dfs(n, k, current_row, current_column){
 	if (current_column > k || current_row > n){
-		return
+		return 0
 	} else if (current_row == n && current_column == k){
-		let count = [Number(total_count.pop())]
-		count[0] += 1
-		total_count.push(...count)
+		return 1
 	} else {
-		dfs(n, k, total_count, current_row, current_column + 1)
-		dfs(n, k, total_count, current_row + 1, current_column)
+		let right_traversal = dfs(n, k, current_row, current_column + 1)
+		let down_traversal = dfs(n, k, current_row + 1, current_column)
+		return right_traversal + down_traversal
 	} 
 }
 
