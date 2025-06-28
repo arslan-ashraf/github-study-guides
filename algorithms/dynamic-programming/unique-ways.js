@@ -1,5 +1,4 @@
-// backtracking
-function unique_ways_backtrack(n, k){
+function unique_ways_backtracking(n, k){
 	let total_count = [0]
 	dfs(n, k, total_count, 1, 1)
 	return total_count[0]
@@ -18,10 +17,10 @@ function dfs(n, k, total_count, current_row, current_column){
 	} 
 }
 
-console.log(unique_ways_backtrack(3, 3) == 6)
-console.log(unique_ways_backtrack(3, 7) == 28)
-console.log(unique_ways_backtrack(7, 3) == 28)
-console.log(unique_ways_backtrack(3, 4) == 10)
+console.log(unique_ways_backtracking(3, 3) == 6)
+console.log(unique_ways_backtracking(3, 7) == 28)
+console.log(unique_ways_backtracking(7, 3) == 28)
+console.log(unique_ways_backtracking(3, 4) == 10)
 
 
 function unique_ways_dp(n, k){
