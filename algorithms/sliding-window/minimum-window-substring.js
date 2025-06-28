@@ -1,11 +1,11 @@
 function minimum_window_substring(str, pattern){
 
-	let pattern_counter_map = {} // new Array(128) is better, upto 128 characters
+	let pattern_frequency_map = {} // new Array(128) is better, upto 128 characters
 	for (let i = 0; i < pattern.length; i++){
-		if (pattern_counter_map[pattern[i]]){
-			pattern_counter_map[pattern[i]] += 1
+		if (pattern_frequency_map[pattern[i]]){
+			pattern_frequency_map[pattern[i]] += 1
 		} else {
-			pattern_counter_map[pattern[i]] = 1
+			pattern_frequency_map[pattern[i]] = 1
 		}
 	}
 
@@ -14,16 +14,17 @@ function minimum_window_substring(str, pattern){
 	let pattern_counter = pattern.length
 
 	while (right < str.length){
-		if (pattern_counter_map[str[right]] > 0) pattern_counter -= 1
-		pattern_counter_map[str[right]] -= 1
+		if (pattern_frequency_map[str[right]] > 0) pattern_counter -= 1
+		if (pattern_frequency_map[str[right]] != undefined) pattern_frequency_map[str[right]] -= 1
 		right += 1
+
 		while (pattern_counter == 0){
 			if (right - left < smallest_window_length){
 				smallest_window_length = right - left
 				smallest_window_start = left
 			}
-			if (pattern_counter_map[str[left]] == 0) pattern_counter += 1
-			pattern_counter_map[str[left]] += 1
+			if (pattern_frequency_map[str[left]] == 0) pattern_counter += 1
+			if (pattern_frequency_map[str[left]] != undefined) pattern_frequency_map[str[left]] += 1
 			left += 1
 		}
 	}
