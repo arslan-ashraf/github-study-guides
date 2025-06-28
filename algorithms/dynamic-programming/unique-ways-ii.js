@@ -1,22 +1,18 @@
-// backtracking
-function unique_ways_ii_backtrack(matrix){
+function unique_ways_ii_backtracking(matrix){
 	let n = matrix.length, m = matrix[0].length
-	let total_count = [0]
-	dfs(matrix, n - 1, m - 1, total_count, 0, 0)
-	return total_count[0]
+	return dfs(matrix, n - 1, m - 1, 0, 0)
 }
 
-function dfs(matrix, n, m, total_count, current_row, current_column){
+function dfs(matrix, n, m, current_row, current_column){
 	if (current_row > n || current_column > m ||
 		matrix[current_row][current_column] == 1){
-		return
+		return 0
 	} else if (current_row == n && current_column == m){
-		let count = [Number(total_count.pop())]
-		count[0] += 1
-		total_count.push(...count)
+		return 1
 	} else {
-		dfs(matrix, n, m, total_count, current_row, current_column + 1)
-		dfs(matrix, n, m, total_count, current_row + 1, current_column)
+		let right_traversal = dfs(matrix, n, m, current_row, current_column + 1)
+		let down_traversal = dfs(matrix, n, m, current_row + 1, current_column)
+		return right_traversal + down_traversal
 	}
 }
 
@@ -27,7 +23,7 @@ let matrix = [
 	[0, 0, 0, 0, 0]
 ]
 
-console.log(unique_ways_ii_backtrack(matrix) == 3)
+console.log(unique_ways_ii_backtracking(matrix) == 3)
 
 
 function unique_ways_ii_dp(matrix){
