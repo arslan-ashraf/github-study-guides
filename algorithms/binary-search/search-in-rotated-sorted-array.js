@@ -1,4 +1,4 @@
-function search_rotated(arr, target) {
+function search_in_rotated_sorted_array(arr, target) {
     let left = 0
     let right = arr.length - 1
     let middle;
@@ -30,3 +30,5 @@ function search_rotated(arr, target) {
     }
     return - 1
 }
+
+console.log(search_in_rotated_sorted_array([4, 5, 6, 7, 8, 9, 0, 1, 2, 3], 0))
