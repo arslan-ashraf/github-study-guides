@@ -39,7 +39,7 @@ function dfs(matrix, target, target_index, directions, current_row, current_colu
 
 let matrix = [
 	['h', 'c', 'r', 'e', 'c'],
-	['c', 'a', 'e', 'a', 'c'],
+	['c', 'a', 'e', 'a', 'd'],
 	['y', 't', 'e', 'a', 'b'],
 	['o', 'i', 'n', 'l', 'l'],
 	['u', 'p', 'g', 'v', 'f'],
@@ -52,5 +52,5 @@ console.log(word_search(matrix, "eating") == true)
 console.log(word_search(matrix, "reach") == true)
 console.log(word_search(matrix, "ball") == true)
 console.log(word_search(matrix, "you") == true)
-console.log(word_search(matrix, "read") == false)
+console.log(word_search(matrix, "read") == true)
 console.log(word_search(matrix, "cats") == false)
