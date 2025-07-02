@@ -55,16 +55,22 @@ function TrieNode(){
 
 function build_trie(target_words){
 	let root_node = new TrieNode()
+
 	for (let i = 0; i < target_words.length; i++){
+		
 		let current_trie_node = root_node
 		for (let w = 0; w < target_words[i].length; w++){
+
 			let character = target_words[i][w]
 			let character_index = character.charCodeAt() - "a".charCodeAt()
+
 			if (current_trie_node.child_nodes[character_index] == undefined){
 				current_trie_node.child_nodes[character_index] = new TrieNode()
 			}
+
 			current_trie_node = current_trie_node.child_nodes[character_index]
 		}
+
 		current_trie_node.word = target_words[i]
 	}
 	return root_node
