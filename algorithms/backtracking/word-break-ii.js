@@ -29,6 +29,7 @@ function dfs(str, word_set, left_index, result, temp_str){
 // 		"download sand work shop", "download sand workshop",
 // 		"downloads and work shop", "downloads and workshop"
 // ]
+
 console.log(
 	word_break_ii(
 		"downloadsandworkshop", 
@@ -41,22 +42,23 @@ console.log(
 function word_break_ii_memoized(str, words){
 	let result = []
 	let left_index = 0
+	let memo = {}
 	let word_set = new Set()
 	words.map((word) => word_set.add(word))
 
-	dfs(str, word_set, left_index, result, "", {})
+	dfs_memoized(str, word_set, left_index, result, "", memo)
 
+	console.log(memo)
 	return result
 }
 
-function dfs(str, word_set, left_index, result, temp_str, memo){
-	// if (memo[left_index] != undefined){
-	// 	for(let i = 0; i < memo[left_index].length; i++){
-	// 		result.push((temp_str + memo[left_index][i].join("")).trim())
-	// 	}
-	// 	return
-	// }
-	console.log(memo)
+function dfs_memoized(str, word_set, left_index, result, temp_str, memo){
+	if (memo[left_index] != undefined){
+		for(let i = 0; i < memo[left_index].length; i++){
+			result.push((temp_str + " " + memo[left_index][i]).trim())
+		}
+		return
+	}
 	if (left_index == str.length){
 		result.push(temp_str.trim())
 	}
@@ -64,22 +66,42 @@ function dfs(str, word_set, left_index, result, temp_str, memo){
 		let left_substring = str.substring(left_index, right_index + 1)
 		if (word_set.has(left_substring)){
 			// implicit right_substring with right_index + 1
-			dfs(str, word_set, right_index + 1, result, temp_str + " " + left_substring)
-
-			if (memo[left_index] != undefined){
-				if (memo[right_index + 1] != undefined){
-					memo[right_index + 1].map((s) => memo[left_index].push(left_substring + " " + s))
-				} else {
-					memo[left_index].push(left_substring)
-				}
-			} else {
-				memo[left_index] = [left_substring]
-			}
+			dfs_memoized(str, word_set, right_index + 1, result, temp_str + " " + left_substring, memo)
 			
+			if (memo[right_index + 1] != undefined){
+
+				for (let i = 0; i < memo[right_index + 1].length; i++){
+					if (memo[left_index] != undefined){
+						memo[left_index].push(left_substring + " " + memo[right_index + 1][i])
+					} else {
+						memo[left_index] = [left_substring + " " + memo[right_index + 1][i]]
+					}
+				}
+				
+			} else {
+
+				if (memo[left_index] != undefined){
+					memo[left_index].push(left_substring + " " + str.substring(right_index + 1))
+				} else {
+					memo[left_index] = [left_substring]
+				}
+
+			}
+
 		}
 	}
 }
 
+
+// the memo map should be
+// memo = { 
+// 	0:  ['down load sand work shop', 'down load sand workshop ', 'down loads and work shop', 'down loads and workshop ', 'download sand work shop', 'download sand workshop ', 'downloads and work shop', 'downloads and workshop '],
+// 	4:  ['load sand work shop', 'load sand workshop ', 'loads and work shop', 'loads and workshop '],
+// 	8:  ['sand work shop', 'sand workshop '],
+// 	9:  ['and work shop', 'and workshop '],
+// 	12: ['work shop', 'workshop '],
+// 	16: ['shop']
+// }
 
 // should return: [
 // 		"down load sand work shop", "down load sand workshop",
@@ -87,6 +109,7 @@ function dfs(str, word_set, left_index, result, temp_str, memo){
 // 		"download sand work shop", "download sand workshop",
 // 		"downloads and work shop", "downloads and workshop"
 // ]
+
 console.log(
 	word_break_ii_memoized(
 		"downloadsandworkshop", 
