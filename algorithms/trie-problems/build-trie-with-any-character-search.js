@@ -54,7 +54,7 @@ class Trie {
 			
 			word_index += 1
 		}
-		return true
+		return current_trie_node.is_word == true ? true : false
 	}
 }
 
@@ -64,5 +64,11 @@ trie.insert_word("bat")
 trie.insert_word("ball")
 trie.insert_word("ate")
 
-trie.search_word("bat")
-trie.search_word(".at")
+console.log(trie.search_word("bat") == true)
+console.log(trie.search_word(".at") == true)
+console.log(trie.search_word(".a.") == true)
+console.log(trie.search_word(".x.") == false)
+console.log(trie.search_word("..e") == true)
+console.log(trie.search_word("..ll") == true)
+console.log(trie.search_word("..l") == false)
+console.log(trie.search_word("ba..") == true)
