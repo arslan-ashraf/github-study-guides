@@ -1,9 +1,9 @@
-function rotate_list(list, k){
-	if (!list || !list.next) return list
+function rotate_list(head_node, k){
+	if (!head_node || !head_node.next) return head_node
 
-	let left_node = list, right_node = list
+	let left_node = head_node, right_node = head_node
 	let num_nodes = 0
-	let dummy = list 
+	let dummy = head_node 
 
 	while (dummy){
 		num_nodes += 1
@@ -11,7 +11,7 @@ function rotate_list(list, k){
 	}
 
 	k = k % num_nodes
-	if (k == 0) return list 
+	if (k == 0) return head_node 
 	
 	for (let i = 0; i < k; i++){
 		right_node = right_node.next
@@ -24,6 +24,6 @@ function rotate_list(list, k){
 
 	let new_list = left_node.next
 	left_node.next = null
-	right_node.next = list
+	right_node.next = head_node
 	return new_list
 }
