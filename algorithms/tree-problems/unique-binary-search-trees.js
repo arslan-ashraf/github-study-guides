@@ -12,4 +12,6 @@ function dfs(n){
 }
 
 
-console.log(unique_binary_search_trees(3))
+console.log(unique_binary_search_trees(3) == 5)
+console.log(unique_binary_search_trees(4) == 14)
+console.log(unique_binary_search_trees(5) == 42)
