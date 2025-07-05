@@ -35,4 +35,27 @@ function dfs_memoized(n, memo){
 	return result
 }
 
+console.log(unique_binary_search_trees_memoized(3) == 5)
+console.log(unique_binary_search_trees_memoized(4) == 14)
 console.log(unique_binary_search_trees_memoized(5) == 42)
+
+
+
+function unique_binary_search_trees_dp(n){
+	let dp = new Array(n + 1).fill(0)
+	dp[0] = 1
+	dp[1] = 1
+
+	for (let i = 2; i <= n; i++){
+		for (let j = 1; j <= i; j++){
+			dp[i] += dp[j - 1] * dp[i - j]
+		}
+	}
+
+	console.log(dp)
+	return dp[n]
+}
+
+console.log(unique_binary_search_trees_dp(3) == 5)
+console.log(unique_binary_search_trees_dp(4) == 14)
+console.log(unique_binary_search_trees_dp(5) == 42)
