@@ -6,3 +6,6 @@ function gray_code(n){
 	}
 	return gray_codes
 }
+
+console.log(gray_code(2))
+console.log(gray_code(3))
