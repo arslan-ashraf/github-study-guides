@@ -4,17 +4,17 @@ function TreeNode(value){
 	this.right = null
 }
 
-function is_valid_binary_tree(tree){
-	return in_order_traversal(tree, -1/0, 1/0)
+function is_valid_binary_tree(tree_node){
+	return in_order_traversal(tree_node, -1/0, 1/0)
 }
 
-function in_order_traversal(tree, lower_bound, upper_bound){
-	if (tree == null) return true
+function in_order_traversal(tree_node, lower_bound, upper_bound){
+	if (tree_node == null) return true
 
-	if (lower_bound < tree.value && tree.value < upper_bound){
+	if (lower_bound < tree_node.value && tree_node.value < upper_bound){
 
-		let is_left_subtree_valid = in_order_traversal(tree.left, lower_bound, tree.value)
-		let is_right_subtree_valid = in_order_traversal(tree.right, tree.value, upper_bound)
+		let is_left_subtree_valid = in_order_traversal(tree_node.left, lower_bound, tree_node.value)
+		let is_right_subtree_valid = in_order_traversal(tree_node.right, tree_node.value, upper_bound)
 		return is_left_subtree_valid && is_right_subtree_valid
 
 	} else {
