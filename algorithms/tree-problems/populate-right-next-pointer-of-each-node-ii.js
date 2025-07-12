@@ -6,24 +6,24 @@ function TreeNode(value){
 }
 
 function populate_right_next_pointer_of_each_node_ii_BFS(root_node){
-	let dummy_pointer = new TreeNode(0)
-	let previous_node = dummy_pointer
+	let dummy_node = new TreeNode(0)
+	let linked_list_tail_node = dummy_node
 	let current_node = root_node
 
 	while (current_node != null){
 		if (current_node.left != null){
-			previous_node.next = current_node.left
-			previous_node = previous_node.next
+			linked_list_tail_node.next = current_node.left
+			linked_list_tail_node = linked_list_tail_node.next
 		}
 		if (current_node.right != null){
-			previous_node.next = current_node.right
-			previous_node = previous_node.next
+			linked_list_tail_node.next = current_node.right
+			linked_list_tail_node = linked_list_tail_node.next
 		}
 		current_node = current_node.next
 		if (current_node == null){
-			previous_node = dummy_pointer
-			current_node = dummy_pointer.next
-			dummy_pointer.next = null
+			linked_list_tail_node = dummy_node
+			current_node = dummy_node.next   // move down one level to left most node
+			dummy_node.next = null
 		}
 	}
 
