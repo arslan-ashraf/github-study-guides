@@ -6,6 +6,7 @@ function TreeNode(value){
 
 let previous_node = null
 
+// reverse postorder traversal: right, left, head
 function flatten_binary_tree_to_linked_list_preorder(root_node){
 	flatten(root_node)
 }
@@ -20,6 +21,25 @@ function flatten(tree_node){
 	tree_node.left = null
 
 	previous_node = tree_node
+}
+
+
+function flatten_binary_tree_to_linked_list_preorder_iterative(root_node){
+	let current_node = root_node
+	while (current_node != null){
+
+		if (current_node.left != null){
+
+			let previous_node = current_node.left
+			while(previous_node.right != null){ previous_node = previous_node.right }
+			previous_node.right = current_node.right
+
+			current_node.right = current_node.left
+			current_node.left = null
+		}
+
+		current_node = current_node.right
+	}
 }
 
 
@@ -41,4 +61,5 @@ two.right = four
 five.left = six
 five.right = seven
 
-flatten_binary_tree_to_linked_list_preorder(one)
+// flatten_binary_tree_to_linked_list_preorder(one)
+flatten_binary_tree_to_linked_list_preorder_iterative(one)
