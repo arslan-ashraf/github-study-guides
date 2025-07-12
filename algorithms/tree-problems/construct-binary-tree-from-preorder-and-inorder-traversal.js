@@ -16,13 +16,12 @@ function construct_binary_tree_from_preorder_and_inorder_traversal(
 	let inorder_left = 0
 	let inorder_right = inorder_array.length - 1
 	return build_tree(
-		preorder_array, inorder_array, 
-		inorder_left, inorder_right, inorder_hashmap)
+		preorder_array, inorder_array, inorder_left, inorder_right, inorder_hashmap
+	)
 }
 
 function build_tree(
-	preorder_array, inorder_array, 
-	inorder_left, inorder_right, inorder_hashmap
+	preorder_array, inorder_array, inorder_left, inorder_right, inorder_hashmap
 ){
 
 	if (inorder_left > inorder_right) return null
@@ -35,16 +34,14 @@ function build_tree(
 
 	let current_node = new TreeNode(current_node_value)
 
-	// move right pointer in inorder array
+	// move right pointer inwards in inorder array
 	current_node.left = build_tree(
-		preorder_array, inorder_array,
-		inorder_left, inorder_current_index - 1, inorder_hashmap
+		preorder_array, inorder_array, inorder_left, inorder_current_index - 1, inorder_hashmap
 	)
 
-	// move left pointer in inorder array
+	// move left pointer inwards in inorder array
 	current_node.right = build_tree(
-		preorder_array, inorder_array,
-		inorder_current_index + 1, inorder_right, inorder_hashmap
+		preorder_array, inorder_array, inorder_current_index + 1, inorder_right, inorder_hashmap
 	)
 
 	return current_node
