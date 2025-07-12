@@ -11,16 +11,16 @@ function flatten_binary_tree_to_linked_list_preorder(root_node){
 	flatten(root_node)
 }
 
-function flatten(tree_node){
-	if (tree_node == null) return
+function flatten(current_tree_node){
+	if (current_tree_node == null) return
 
-	flatten(tree_node.right)
-	flatten(tree_node.left)
+	flatten(current_tree_node.right)
+	flatten(current_tree_node.left)
 
-	tree_node.right = previous_node
-	tree_node.left = null
+	current_tree_node.right = previous_node
+	current_tree_node.left = null
 
-	previous_node = tree_node
+	previous_node = current_tree_node
 }
 
 
