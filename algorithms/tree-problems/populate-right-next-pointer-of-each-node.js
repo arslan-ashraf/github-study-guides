@@ -7,6 +7,7 @@ function TreeNode(value){
 
 function populate_right_next_pointer_of_each_node_DFS(root_node){
 	preorder_dfs(root_node)
+	return root_node
 }
 
 function preorder_dfs(current_tree_node){
@@ -49,4 +50,6 @@ function populate_right_next_pointer_of_each_node_BFS_no_queue(root_node){
 
 		current_tree_node = current_tree_node.left
 	}
+
+	return dummy_root_pointer
 }
