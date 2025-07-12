@@ -1,0 +1,58 @@
+function TreeNode(value){
+	this.value = value
+	this.left = null
+	this.right = null
+}
+
+
+let preorder_index = 0
+
+function construct_binary_tree_from_preorder_and_inorder_traversal(
+	preorder_array, inorder_array
+){
+	let inorder_hashmap = {}
+	inorder_array.map((tree_value, index) => inorder_hashmap[tree_value] = index )
+	
+	let inorder_left = 0
+	let inorder_right = inorder_array.length - 1
+	return build_tree(
+		preorder_array, inorder_array, 
+		inorder_left, inorder_right, inorder_hashmap)
+}
+
+function build_tree(
+	preorder_array, inorder_array, 
+	inorder_left, inorder_right, inorder_hashmap
+){
+
+	if (inorder_left > inorder_right) return null
+
+	let current_node_value = preorder_array[preorder_index]
+	
+	let inorder_current_index = inorder_hashmap[current_node_value]
+	
+	preorder_index += 1
+
+	let current_node = new TreeNode(current_node_value)
+
+	// move right pointer in inorder array
+	current_node.left = build_tree(
+		preorder_array, inorder_array,
+		inorder_left, inorder_current_index - 1, inorder_hashmap
+	)
+
+	// move left pointer in inorder array
+	current_node.right = build_tree(
+		preorder_array, inorder_array,
+		inorder_current_index + 1, inorder_right, inorder_hashmap
+	)
+
+	return current_node
+
+}
+
+
+let preorder_array = [7, 4, 1, 5, 9, 8]
+let inorder_array  = [1, 4, 5, 7, 8, 9]
+
+construct_binary_tree_from_preorder_and_inorder_traversal(preorder_array, inorder_array)
