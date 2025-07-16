@@ -1,6 +1,80 @@
 function best_time_to_buy_and_sell_stock_iii_backtracking(prices, num_transactions = 2){
-	
+	// 0 = no stock owned, 1 = stock owned
+	let transactions_made = 0
+	let current_state = 0
+	let current_level = 0
+	return backtracking_dfs(prices, transactions_made, num_transactions, current_state, current_level)
 }
+
+function backtracking_dfs(prices, transactions_made, total_transactions, current_state, current_level){
+	if (current_level >= prices.length || transactions_made >= total_transactions) return 0
+
+	// do nothing
+	let do_nothing = backtracking_dfs(prices, transactions_made, total_transactions, current_state, current_level + 1)
+
+	let buy_sell_action = 0
+	if (current_state == 0){	// no stock owned
+
+		let buy_price = prices[current_level]
+		buy_sell_action = backtracking_dfs(prices, transactions_made, total_transactions, 1, current_level + 1) - buy_price
+
+	} else if (current_state == 1){
+
+		let sell_price = prices[current_level]
+		buy_sell_action = backtracking_dfs(prices, transactions_made + 1, total_transactions, 0, current_level + 1) + sell_price
+
+	}
+
+	let current_profit = Math.max(do_nothing, buy_sell_action)
+	
+	return current_profit
+}
+
+best_time_to_buy_and_sell_stock_iii_backtracking([ 0, 5, 10 ])
+best_time_to_buy_and_sell_stock_iii_backtracking([ 3, 3, 5, 0, 0, 3, 1, 4 ])
+
+
+
+function best_time_to_buy_and_sell_stock_iii_backtracking_memoized(prices, num_transactions = 2){
+	// 0 = no stock owned, 1 = stock owned
+	let transactions_made = 0
+	let current_state = 0
+	let current_level = 0
+	let cache = {}
+	return backtracking_dfs_memoized(prices, transactions_made, num_transactions, current_state, current_level, cache)
+}
+
+function backtracking_dfs_memoized(prices, transactions_made, total_transactions, current_state, current_level, cache){
+	if (current_level >= prices.length || transactions_made >= total_transactions) return 0
+
+	let key = String(transactions_made) + " | " + String(current_state) + " | " + String(current_level)
+	if (cache[key] != undefined) return cache[key]
+
+	// do nothing
+	let do_nothing = backtracking_dfs_memoized(prices, transactions_made, total_transactions, current_state, current_level + 1, cache)
+
+	let buy_sell_action = 0
+	if (current_state == 0){	// no stock owned
+
+		let buy_price = prices[current_level]
+		buy_sell_action = backtracking_dfs_memoized(prices, transactions_made, total_transactions, 1, current_level + 1, cache) - buy_price
+
+	} else if (current_state == 1){
+
+		let sell_price = prices[current_level]
+		buy_sell_action = backtracking_dfs_memoized(prices, transactions_made + 1, total_transactions, 0, current_level + 1, cache) + sell_price
+
+	}
+
+	let current_profit = Math.max(do_nothing, buy_sell_action)
+	cache[key] = current_profit
+	
+	return current_profit
+}
+
+best_time_to_buy_and_sell_stock_iii_backtracking_memoized([ 0, 5, 10 ])
+best_time_to_buy_and_sell_stock_iii_backtracking_memoized([ 3, 3, 5, 0, 0, 3, 1, 4 ])
+
 
 
 function best_time_to_buy_and_sell_stock_iii_dp(prices, num_transactions = 2){
