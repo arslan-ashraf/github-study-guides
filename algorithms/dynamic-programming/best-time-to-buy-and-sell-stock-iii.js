@@ -30,8 +30,8 @@ function backtracking_dfs(prices, transactions_made, total_transactions, current
 	return current_profit
 }
 
-best_time_to_buy_and_sell_stock_iii_backtracking([ 0, 5, 10 ])
-best_time_to_buy_and_sell_stock_iii_backtracking([ 3, 3, 5, 0, 0, 3, 1, 4 ])
+console.log(best_time_to_buy_and_sell_stock_iii_backtracking([ 0, 5, 10 ]) == 10)
+console.log(best_time_to_buy_and_sell_stock_iii_backtracking([ 3, 3, 5, 0, 0, 3, 1, 4 ]) == 6)
 
 
 
@@ -72,8 +72,9 @@ function backtracking_dfs_memoized(prices, transactions_made, total_transactions
 	return current_profit
 }
 
-best_time_to_buy_and_sell_stock_iii_backtracking_memoized([ 0, 5, 10 ])
-best_time_to_buy_and_sell_stock_iii_backtracking_memoized([ 3, 3, 5, 0, 0, 3, 1, 4 ])
+console.log(best_time_to_buy_and_sell_stock_iii_backtracking_memoized([ 0, 5, 10 ]) == 10)
+console.log(best_time_to_buy_and_sell_stock_iii_backtracking_memoized([ 0, 5, 0, 1, 10 ]) == 15)
+console.log(best_time_to_buy_and_sell_stock_iii_backtracking_memoized([ 3, 3, 5, 0, 0, 3, 1, 4 ]) == 6)
 
 
 
@@ -112,6 +113,7 @@ function best_time_to_buy_and_sell_stock_iii_dp_space_optimized(prices, num_tran
 
 	for (let i = 1; i < prices.length; i++){
 		for (let k = 1; k <= num_transactions; k++){
+			let sell_price = prices[i]
 			buy_prices[k] = Math.min(buy_prices[k], sell_price - dp[k - 1])
 			dp[k] = Math.max(dp[k], sell_price - buy_prices[k])
 		}
