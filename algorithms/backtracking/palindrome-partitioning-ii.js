@@ -22,21 +22,19 @@ function palindrome_partitioning_ii(str){
 
 	for (let i = 0; i < n; i++){ minimum_cut_count[i] = i }
 
-	// for each column, we go down the rows only up to the current
-	// column index as the matrix below the diagonal is meaningless
-	for (let column = 1; column < n; column++){
-		for (let row = 0; row <= column; row++){
+	// in the matrix, for each column, we go down the rows only up to 
+	// the current column index as the matrix below the diagonal is meaningless
+	for (let right = 1; right < n; right++){
+		for (let left = 0; left <= right; left++){
 
-			let i = column, j = row  		// for clarity
+			// is substring from left to right pointers palindromic
+			if (is_substring_palindrome_cache[left][right]){ 
 
-			// is substring from j to i palindromic
-			if (is_substring_palindrome_cache[j][i]){ 
-
-				if (j == 0){
-					minimum_cut_count[i] = 0
+				if (left == 0){
+					minimum_cut_count[right] = 0
 				} else {
-					minimum_cut_count[i] = Math.min(minimum_cut_count[i], 
-													minimum_cut_count[j - 1] + 1)
+					minimum_cut_count[right] = Math.min(minimum_cut_count[right], 
+														minimum_cut_count[left - 1] + 1)
 				}
 
 			}
