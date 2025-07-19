@@ -22,15 +22,15 @@ function palindrome_partitioning_ii(str){
 
 	for (let i = 0; i < n; i++){ minimum_cut_count[i] = i }
 
-	// for each column, we go down the rows up to the current column
-	// as the matrix is meaningless below the diagonal
+	// for each column, we go down the rows only up to the current
+	// column index as the matrix below the diagonal is meaningless
 	for (let column = 1; column < n; column++){
 		for (let row = 0; row <= column; row++){
 
-			// is substring from row index to column index palindromic
-			if (is_substring_palindrome_cache[row][column]){ 
+			let i = column, j = row  		// for clarity
 
-				let i = column, j = row  		// for clarity
+			// is substring from j to i palindromic
+			if (is_substring_palindrome_cache[j][i]){ 
 
 				if (j == 0){
 					minimum_cut_count[i] = 0
