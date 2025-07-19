@@ -9,8 +9,8 @@ function remove_fewest_overlapping_intervals(intervals){
 		let current_interval_start_time = intervals[i][0]
 		let current_interval_end_time 	= intervals[i][1]
 
-		// check if the current interval has started before the last
-		// non overlapping one has ended
+		// if the current interval starts before the last non overlapping one has ended
+		// if so, then there is overlap and the current interval can be removed
 		if (current_interval_start_time < last_non_overlapping_interval_end_time){
 			num_intervals_to_remove += 1
 		} else {
