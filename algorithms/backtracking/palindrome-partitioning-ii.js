@@ -20,7 +20,8 @@ function palindrome_partitioning_ii(str){
 	// part 2, dynamic programming
 	let minimum_cut_count = new Array(n)
 
-	for (let i = 0; i < n; i++){ minimum_cut_count[i] = i }
+	// base case, if each letter is unique, then we require n - 1 cuts
+	for (let i = 0; i < n; i++){ minimum_cut_count[i] = i /* base case */ }
 
 	// in the matrix, for each column, we go down the rows only up to 
 	// the current column index as the matrix below the diagonal is meaningless
@@ -30,14 +31,21 @@ function palindrome_partitioning_ii(str){
 			// is substring from left to right pointers palindromic
 			if (is_substring_palindrome_cache[left][right]){ 
 
-				if (left == 0){
-					minimum_cut_count[right] = 0
+				// substring from left=0 to right is palindromic
+				if (left == 0){ 
+					minimum_cut_count[right] = 0 // so 0 cuts are needed
 				} else {
+					// since substring from left to right is palindromic,
+					// we take minimum of what's on the left ([left - 1] + 1)
+					// and whatever is currently at the right index
 					minimum_cut_count[right] = Math.min(minimum_cut_count[right], 
 														minimum_cut_count[left - 1] + 1)
 				}
 
 			}
+
+			// if substring is not palindromic, then we need right - left + 1 cuts
+			// but that's already covered by the base case above
 
 		}
 	}
