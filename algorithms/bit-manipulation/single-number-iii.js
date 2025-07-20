@@ -7,9 +7,10 @@ function single_number_iii(arr){
 	let right_most_bit = XOR_of_all_nums & -XOR_of_all_nums
 
 	let first_single_number = 0
+	
 	for (let i = 0; i < arr.length; i++){
-		// separate numbers in the array into two groups
-		// and find the first unique number
+		// separate numbers in the array into two virtual groups
+		// and find the first unique number in that group
 		if (arr[i] & right_most_bit != 0){
 			first_single_number ^= arr[i]
 		}
