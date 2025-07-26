@@ -77,16 +77,16 @@ function dfs_memoized(str, word_set, left_index, result, temp_str, memo){
 
 				for (let i = 0; i < memo[right_index + 1].length; i++){
 					if (memo[left_index] != undefined){
-						memo[left_index].push(left_substring + " " + memo[right_index + 1][i])
+						memo[left_index].push((left_substring + " " + memo[right_index + 1][i]).trim())
 					} else {
-						memo[left_index] = [left_substring + " " + memo[right_index + 1][i]]
+						memo[left_index] = [(left_substring + " " + memo[right_index + 1][i]).trim()]
 					}
 				}
 				
 			} else { // if not, memoize the bottom most leaf nodes
 
 				if (memo[left_index] != undefined){
-					memo[left_index].push(left_substring + " " + str.substring(right_index + 1))
+					memo[left_index].push((left_substring + " " + str.substring(right_index + 1)).trim())
 				} else {
 					memo[left_index] = [left_substring]
 				}
