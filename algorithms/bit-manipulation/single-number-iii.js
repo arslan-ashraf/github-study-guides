@@ -17,7 +17,7 @@ function single_number_iii(arr){
 	}
 
 	// the second_single_number can be found by XORing the first_single_number
-	// with initial XOR_of_all_nums
+	// with initial XOR_of_all_nums, note: x ^ y ^ x = y
 
 	let second_single_number = XOR_of_all_nums ^ first_single_number
 
