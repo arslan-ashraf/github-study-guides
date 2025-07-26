@@ -4,8 +4,8 @@ function best_time_to_buy_and_sell_stock_i(prices){
 	let max_profit = 0
 
 	while (right < prices.length){
-		let current_profit = prices[right] - prices[left]
 		if (prices[left] < prices[right]){
+			let current_profit = prices[right] - prices[left]
 			max_profit = Math.max(max_profit, current_profit)
 		} else {
 			left = right
