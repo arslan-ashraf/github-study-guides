@@ -23,3 +23,6 @@ function single_number_iii(arr){
 
 	return [first_single_number, second_single_number]
 }
+
+
+console.log(single_number_iii([5, 3, 2, 2, 1, 3, 4, 5]))	// returns [1, 4]
