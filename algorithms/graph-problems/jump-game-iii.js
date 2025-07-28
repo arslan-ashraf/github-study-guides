@@ -15,6 +15,7 @@ function jump_game_III(arr, start_index){
 		let forward_jump_index = current_index + jump_value
 		let backward_jump_index = current_index - jump_value
 
+		// ensure we have not already visited a vertex with "arr[...] != -1"
 		if (forward_jump_index < arr.length && arr[forward_jump_index] != -1){
 			queue.push(forward_jump_index)
 		}
