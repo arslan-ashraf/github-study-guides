@@ -23,6 +23,8 @@ function jump_game_III(arr, start_index){
 			queue.push(backward_jump_index)
 		}
 	}
+
+	return false
 }
 
-console.log(jump_game_III([4, 2, 3, 0, 3, 1, 2], 5))
+console.log(jump_game_III([4, 2, 3, 0, 3, 1, 2], 5) == true)
