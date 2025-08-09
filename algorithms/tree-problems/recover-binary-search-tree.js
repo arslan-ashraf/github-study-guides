@@ -1,9 +1,3 @@
-function TreeNode(value){
-	this.value = value
-	this.left = null
-	this.right = null
-}
-
 let first_faulty_node = null
 let second_faulty_node = null
 let previous_node = new TreeNode(-1/0)
@@ -41,6 +35,13 @@ function in_order_recovery(tree_node){
 	console.log("-".repeat(25))
 	previous_node = tree_node
 	in_order_recovery(tree_node.right)
+}
+
+
+function TreeNode(value){
+	this.value = value
+	this.left = null
+	this.right = null
 }
 
 
