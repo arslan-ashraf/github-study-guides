@@ -1,15 +1,9 @@
-function TreeNode(value){
-	this.value = value
-	this.left = null
-	this.right = null
-}
-
-let previous_node = null
-
 // reverse postorder traversal: right, left, head
 function flatten_binary_tree_to_linked_list_preorder(root_node){
 	flatten(root_node)
 }
+
+let previous_node = null
 
 function flatten(current_tree_node){
 	if (current_tree_node == null) return
@@ -22,6 +16,7 @@ function flatten(current_tree_node){
 
 	previous_node = current_tree_node
 }
+
 
 
 function flatten_binary_tree_to_linked_list_preorder_iterative(root_node){
@@ -42,6 +37,12 @@ function flatten_binary_tree_to_linked_list_preorder_iterative(root_node){
 	}
 }
 
+
+function TreeNode(value){
+	this.value = value
+	this.left = null
+	this.right = null
+}
 
 let one = new TreeNode(1)
 let two = new TreeNode(2)
