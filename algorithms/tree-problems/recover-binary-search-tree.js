@@ -4,19 +4,18 @@ let previous_node = new TreeNode(-1/0)
 
 function recover_binary_search_tree(tree_node){
 	
-	in_order_recovery(tree_node)
+	inorder_traversal_recovery(tree_node)
 
 	let temp = first_faulty_node.value
 	first_faulty_node.value = second_faulty_node.value
 	second_faulty_node.value = temp
 }
 
-function in_order_recovery(tree_node){
+function inorder_traversal_recovery(tree_node){
 
 	if (tree_node == null) return
 
-	console.log(`tree_node.value: ${tree_node.value}, previous_node.value: ${previous_node.value}`)
-	in_order_recovery(tree_node.left)
+	inorder_traversal_recovery(tree_node.left)
 
 	// find first faulty node
 	if (first_faulty_node == null && previous_node.value >= tree_node.value){
@@ -30,11 +29,8 @@ function in_order_recovery(tree_node){
 		console.log(`second_faulty_node: `, second_faulty_node)
 	}
 
-	console.log("-".repeat(25))
-	console.log(`tree_node.value: ${tree_node.value}, previous_node.value: ${previous_node.value}`)
-	console.log("-".repeat(25))
 	previous_node = tree_node
-	in_order_recovery(tree_node.right)
+	inorder_traversal_recovery(tree_node.right)
 }
 
 
