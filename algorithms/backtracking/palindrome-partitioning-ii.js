@@ -28,14 +28,14 @@ function palindrome_partitioning_ii(str){
 	for (let right = 1; right < n; right++){
 		for (let left = 0; left <= right; left++){
 
-			// is substring from left to right pointers palindromic
+			// is substring between left and right indices palindromic
 			if (is_substring_palindrome_cache[left][right]){ 
 
-				// substring from left=0 to right is palindromic
+				// substring betweeen left=0 and right is palindromic
 				if (left == 0){ 
 					minimum_cut_count[right] = 0 // so 0 cuts are needed
 				} else {
-					// since substring from left to right is palindromic,
+					// since substring betweeen left and right is palindromic,
 					// we take minimum of what's on the left ([left - 1] + 1)
 					// and whatever is currently at the right index
 					minimum_cut_count[right] = Math.min(minimum_cut_count[right], 
