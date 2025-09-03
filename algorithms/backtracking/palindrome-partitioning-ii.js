@@ -3,8 +3,8 @@ function palindrome_partitioning_ii(str){
 	let n = str.length
 	if (n == 0) return 0
 
-	// part 1, calculate the is substring palindromic
-	// we only need the top left, ignore bottom left below the diagonal
+	// part 1, pre-calculate the is_substring_palindromic_cache matrix
+	// we only need the top left of matrix, ignore bottom left below the diagonal
 	is_substring_palindrome_cache = new Array(n).fill().map(() => new Array(n).fill(true))
 	
 	for (let i = n - 1; i >= 0; i--){
