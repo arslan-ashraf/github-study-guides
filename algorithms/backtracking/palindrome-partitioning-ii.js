@@ -23,7 +23,7 @@ function palindrome_partitioning_ii(str){
 	// base case, if each letter is unique, then we require n - 1 cuts
 	for (let i = 0; i < n; i++){ minimum_cut_count[i] = i /* base case */ }
 
-	// in the matrix, for each column, we go down the rows only up to the diagonal wihc is also
+	// in the matrix, for each column, we go down the rows only up to the diagonal which is also
 	// the current column index as the matrix below the diagonal is meaningless
 	for (let right = 1; right < n; right++){
 		for (let left = 0; left <= right; left++){
