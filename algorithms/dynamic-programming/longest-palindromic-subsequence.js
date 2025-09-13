@@ -5,9 +5,23 @@ function longest_palindromic_subsequence_backtracking(str){
 }
 
 function dfs(str, i, j, memo){
+
 	if (i > j) return 0
+	if (i == j) return 1
+
 	let memo_key = "(" + String(i) + ", " + String(j) + ")"
 	if (memo[memo_key] != undefined) return memo[memo_key]
+
+	let palindromic_subsequence_length = 0
+
+	if (str[i] == str[j]){
+		palindromic_subsequence_length = 2 + dfs(str, i + 1, j - 1, memo)
+	} else {
+		let left_child = dfs(str, i + 1, j, memo)
+	}
+
+	memo[memo_key] = palindromic_subsequence_length
+	return memo[memo_key]
 }
 
 console.log(longest_palindromic_subsequence_backtracking("bbbcb") == 4)
