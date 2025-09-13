@@ -17,8 +17,8 @@ function find_majority_element1(arr){
 			other_count += 1
 			if (other_count > majority_count) majority_element = other_element
 		} else {
-			other_element = majority_guess
-			other_count = majority_count
+			other_element = majority_element
+			other_count = majority_count > other_count ? majority_count : other_count
 			majority_guess = arr[i]
 			majority_count = 1
 		}
@@ -27,7 +27,6 @@ function find_majority_element1(arr){
 	return majority_element
 }
 
-// fails the test case below
 console.log(find_majority_element1([1,3,1,1,4,1,1,5,1,1,6,2,2]) == 1)
 
 
