@@ -1,4 +1,4 @@
-// does not pass all test cases
+// mostly correct but does not pass all test cases
 function find_majority_element1(arr){
 
 	let majority_guess = arr[0]
@@ -27,18 +27,21 @@ function find_majority_element1(arr){
 	return majority_element
 }
 
+// fails the test case below
+console.log(find_majority_element1([1,3,1,1,4,1,1,5,1,1,6,2,2]) == 1)
+
 
 
 function find_majority_element(arr){
 	let vote_count = 0
-	let majority_element = null
+	let candidate = null
 
 	for (let i = 0; i < arr.length; i++){
 		if (vote_count == 0){
-			majority_element = arr[i]
+			candidate = arr[i]
 			vote_count = 1
 		} else {
-			if (arr[i] == majority_element){
+			if (arr[i] == candidate){
 				vote_count += 1
 			} else {
 				vote_count -= 1
@@ -46,7 +49,7 @@ function find_majority_element(arr){
 		}
 	}
 
-	return majority_element
+	return candidate
 }
 
 console.log(find_majority_element([1,0,1]) == 1)
@@ -59,3 +62,4 @@ console.log(find_majority_element([1,1,1,1,0,0,0]) == 1)
 console.log(find_majority_element([1,1,1,3,3,3,1,4,1]) == 1)
 console.log(find_majority_element([1,1,1,3,3,3,1,1,4]) == 1)
 console.log(find_majority_element([1,1,1,3,3,3,1]) == 1)
+console.log(find_majority_element([1,3,1,1,4,1,1,5,1,1,6,2,2]) == 1)
