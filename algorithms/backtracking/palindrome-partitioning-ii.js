@@ -36,8 +36,8 @@ function palindrome_partitioning_ii(str){
 					minimum_cut_count[right] = 0 // so 0 cuts are needed
 				} else {
 					// since substring betweeen left and right indices is palindromic,
-					// we take minimum of what's on the left ([left - 1] + 1)
-					// and whatever is currently at the right index
+					// we take minimum of what's on the left and add 1, minimum_cut_count[left - 1] + 1
+					// and whatever is currently at the right, minimum_cut_count[right]
 					minimum_cut_count[right] = Math.min(minimum_cut_count[left - 1] + 1,
 														minimum_cut_count[right])
 				}
