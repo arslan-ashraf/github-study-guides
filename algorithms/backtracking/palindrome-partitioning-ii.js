@@ -34,10 +34,11 @@ function palindrome_partitioning_ii(str){
 				// substring betweeen left=0 and right is palindromic
 				if (left == 0){ 
 					minimum_cut_count[right] = 0 // so 0 cuts are needed
+					break 	// we cannot get any better so no point in checking a smaller substring
 				} else {
 					// since substring betweeen left and right indices is palindromic,
 					// we take minimum of what's on the left and add 1, minimum_cut_count[left - 1] + 1
-					// and whatever is currently at the right, minimum_cut_count[right]
+					// and whatever is currently at the right index, minimum_cut_count[right]
 					minimum_cut_count[right] = Math.min(minimum_cut_count[left - 1] + 1,
 														minimum_cut_count[right])
 				}
