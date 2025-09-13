@@ -1,7 +1,9 @@
 function longest_palindromic_subsequence_backtracking(str){
 	let i = 0, j = str.length - 1
 	let memo = {}
-	return dfs(str, i, j, memo)
+	let result = dfs(str, i, j, memo)
+	console.log(memo)
+	return result
 }
 
 function dfs(str, i, j, memo){
@@ -18,10 +20,13 @@ function dfs(str, i, j, memo){
 		palindromic_subsequence_length = 2 + dfs(str, i + 1, j - 1, memo)
 	} else {
 		let left_child = dfs(str, i + 1, j, memo)
+		let right_child = dfs(str, i, j - 1, memo)
+		palindromic_subsequence_length = Math.max(left_child, right_child)
+
 	}
 
 	memo[memo_key] = palindromic_subsequence_length
-	return memo[memo_key]
+	return palindromic_subsequence_length
 }
 
 console.log(longest_palindromic_subsequence_backtracking("bbbcb") == 4)
