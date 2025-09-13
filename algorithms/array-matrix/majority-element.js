@@ -9,15 +9,22 @@ function find_majority_element1(arr){
 
 	for (let i = 1; i < arr.length; i++){
 		if (arr[i] == majority_guess){
+
 			majority_count += 1
 			if (majority_count > other_count) majority_element = majority_guess
-			
+
 		} else if (arr[i] == other_element){
+
 			other_count += 1
 			if (other_count > majority_count) majority_element = other_element
+
 		} else {
+
+			// record current majority and its count
 			other_element = majority_element
 			other_count = majority_count > other_count ? majority_count : other_count
+
+			// start from scratch
 			majority_guess = arr[i]
 			majority_count = 1
 		}
