@@ -38,8 +38,8 @@ function palindrome_partitioning_ii(str){
 					// since substring betweeen left and right indices is palindromic,
 					// we take minimum of what's on the left ([left - 1] + 1)
 					// and whatever is currently at the right index
-					minimum_cut_count[right] = Math.min(minimum_cut_count[right], 
-														minimum_cut_count[left - 1] + 1)
+					minimum_cut_count[right] = Math.min(minimum_cut_count[left - 1] + 1,
+														minimum_cut_count[right])
 				}
 
 			}
