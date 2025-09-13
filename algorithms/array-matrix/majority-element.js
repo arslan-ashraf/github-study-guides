@@ -36,7 +36,7 @@ function find_majority_element1(arr){
 console.log(find_majority_element1([1,3,1,1,4,1,1,5,1,1,6,2,2]) == 1)
 
 
-// explained solution
+// Boyer-Moore Voting
 function find_majority_element(arr){
 	let vote_count = 0
 	let candidate = null
