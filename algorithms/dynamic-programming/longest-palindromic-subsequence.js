@@ -1,3 +1,21 @@
+function longest_palindromic_subsequence_backtracking(str){
+	let i = 0, j = str.length - 1
+	let memo = {}
+	return dfs(str, i, j, memo)
+}
+
+function dfs(str, i, j, memo){
+	if (i > j) return 0
+	let memo_key = "(" + String(i) + ", " + String(j) + ")"
+	if (memo[memo_key] != undefined) return memo[memo_key]
+}
+
+console.log(longest_palindromic_subsequence_backtracking("bbbcb") == 4)
+console.log(longest_palindromic_subsequence_backtracking("bbbb") == 4)
+console.log(longest_palindromic_subsequence_backtracking("abbxyzbb") == 5)
+console.log(longest_palindromic_subsequence_backtracking("bbxyxbb") == 7)
+
+
 function longest_palindromic_subsequence(str){
 	let n = str.length
 	let dp = new Array(n).fill().map(() => new Array(n).fill(0)) // matrix
