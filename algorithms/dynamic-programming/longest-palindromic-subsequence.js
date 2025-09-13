@@ -31,8 +31,8 @@ function dfs(str, i, j, memo){
 
 console.log(longest_palindromic_subsequence_backtracking("bbbcb") == 4)
 console.log(longest_palindromic_subsequence_backtracking("bbbb") == 4)
-console.log(longest_palindromic_subsequence_backtracking("abbxyzbb") == 5)
 console.log(longest_palindromic_subsequence_backtracking("bbxyxbb") == 7)
+console.log(longest_palindromic_subsequence_backtracking("abbxyzbb") == 5)
 
 
 function longest_palindromic_subsequence(str){
@@ -53,5 +53,5 @@ function longest_palindromic_subsequence(str){
 
 console.log(longest_palindromic_subsequence("bbbcb") == 4)
 console.log(longest_palindromic_subsequence("bbbb") == 4)
-console.log(longest_palindromic_subsequence("abbxyzbb") == 5)
 console.log(longest_palindromic_subsequence("bbxyxbb") == 7)
+console.log(longest_palindromic_subsequence("abbxyzbb") == 5)
