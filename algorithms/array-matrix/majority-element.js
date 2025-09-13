@@ -34,7 +34,7 @@ function find_majority_element(arr){
 	let majority_element = null
 
 	for (let i = 0; i < arr.length; i++){
-		if (vote_count = 0){
+		if (vote_count == 0){
 			majority_element = arr[i]
 			vote_count = 1
 		} else {
@@ -45,7 +45,7 @@ function find_majority_element(arr){
 			}
 		}
 	}
-	
+
 	return majority_element
 }
 
