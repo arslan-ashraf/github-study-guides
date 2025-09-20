@@ -1,4 +1,4 @@
-function search_sorted_range(arr, target) {
+function find_left_and_right_indexes(arr, target) {
     let left_index = find_left_right_index(arr, target, "left")
     let right_index = find_left_right_index(arr, target, "right")
     return [left_index, right_index]
