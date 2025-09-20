@@ -11,7 +11,7 @@ function find_extreme_index(arr, target, search_side){
     while (left <= right){
         let middle = Math.floor((left + right)/2)
         if (arr[middle] == target) {
-            // only two changes from standard binary search
+            // only change from standard binary search
             extreme_index = middle
             if (search_side == "left"){
                 right = middle - 1
