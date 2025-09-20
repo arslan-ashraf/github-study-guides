@@ -5,7 +5,7 @@ function find_minimum_rotated_sorted_array(arr){
     while (left <= right){
         let middle = Math.floor((left + right)/2)
         minimum_element = Math.min(minimum_element, arr[middle])
-        if (arr[middle] > arr[right]){
+        if (arr[middle] > arr[right]){ // ex: [5,4,3,1,2], 3 > 2
             left = middle + 1
         } else {
             right = middle - 1

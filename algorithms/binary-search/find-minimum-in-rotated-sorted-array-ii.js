@@ -13,7 +13,7 @@ function find_minimum_rotated_sorted_array_ii(arr){
 			right = middle - 1
 		}
 	}
-	return arr[left]
+	return minimum_element
 }
 
 
