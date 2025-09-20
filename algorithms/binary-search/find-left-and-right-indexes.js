@@ -1,10 +1,10 @@
 function find_left_and_right_indexes(arr, target) {
-    let left_index = find_left_right_index(arr, target, "left")
-    let right_index = find_left_right_index(arr, target, "right")
+    let left_index = find_extreme_index(arr, target, "left")
+    let right_index = find_extreme_index(arr, target, "right")
     return [left_index, right_index]
 }
 
-function find_left_right_index(arr, target, search_side){
+function find_extreme_index(arr, target, search_side){
     let extreme_index = -1
     let left = 0
     let right = arr.length - 1
