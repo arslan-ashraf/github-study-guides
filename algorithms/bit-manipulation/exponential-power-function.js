@@ -13,6 +13,14 @@ function exponential_power(x, n){
 
 
 console.log(exponential_power(2, 10) == 1024)
-console.log(exponential_power(3, 2) == 9)
+console.log(exponential_power(3, -2) == 1/9)
 console.log(exponential_power(3, 3) == 27)
 console.log(exponential_power(3, 4) == 81)
+
+
+function exponential_power_recursive(x, n){
+	let absolute_n = Math.abs(n)
+	let result = backtrack(x, n)
+	return n > 0 ? result : 1/result
+}
+
