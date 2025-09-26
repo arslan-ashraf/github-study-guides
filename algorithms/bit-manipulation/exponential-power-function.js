@@ -10,3 +10,5 @@ function exponential_power(x, n){
 	}
 	return n > 0 ? result : 1/result
 }
+
+console.log(exponential_power(3, 3) == 27)
