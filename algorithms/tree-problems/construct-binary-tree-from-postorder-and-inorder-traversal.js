@@ -1,10 +1,3 @@
-function TreeNode(value){
-	this.value = value
-	this.left = null
-	this.right = null
-}
-
-
 let postorder_index = -1
 
 function construct_binary_tree_from_postorder_and_inorder_traversal(
@@ -49,6 +42,13 @@ function build_tree(
 
 	return current_node
 
+}
+
+
+function TreeNode(value){
+	this.value = value
+	this.left = null
+	this.right = null
 }
 
 
