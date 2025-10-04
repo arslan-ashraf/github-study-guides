@@ -7,13 +7,13 @@ function divide_two_integers(dividend, divisor) {
     }
     let quotient = 0
     while (divisor <= dividend){
-        let _divisor = divisor
+        let running_divisor = divisor
         let running_quotient = 1
-        while ((_divisor << 1) < dividend){
+        while ((running_divisor << 1) < dividend){
             running_quotient = running_quotient << 1
-            _divisor = _divisor << 1
+            running_divisor = running_divisor << 1
         }
-        dividend = dividend - _divisor
+        dividend = dividend - running_divisor
         quotient += running_quotient
     }
     return is_positive ? quotient : -1 * quotient
