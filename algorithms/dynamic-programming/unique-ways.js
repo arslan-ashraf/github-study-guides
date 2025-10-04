@@ -8,9 +8,9 @@ function dfs(n, k, current_row, current_column){
 	} else if (current_row == n && current_column == k){
 		return 1
 	} else {
-		let right_traversal = dfs(n, k, current_row, current_column + 1)
-		let down_traversal = dfs(n, k, current_row + 1, current_column)
-		return right_traversal + down_traversal
+		let move_rightwards_num_ways = dfs(n, k, current_row, current_column + 1)
+		let move_downwards_num_ways = dfs(n, k, current_row + 1, current_column)
+		return move_rightwards_num_ways + move_downwards_num_ways
 	} 
 }
 
