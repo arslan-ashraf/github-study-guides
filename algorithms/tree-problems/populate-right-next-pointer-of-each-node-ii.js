@@ -1,10 +1,3 @@
-function TreeNode(value){
-	this.value = value
-	this.left = null
-	this.right = null
-	this.next = null
-}
-
 function populate_right_next_pointer_of_each_node_ii_BFS(root_node){
 	let current_node = root_node
 
@@ -29,4 +22,12 @@ function populate_right_next_pointer_of_each_node_ii_BFS(root_node){
 	}
 
 	return root_node
+}
+
+
+function TreeNode(value){
+	this.value = value
+	this.left = null
+	this.right = null
+	this.next = null
 }
