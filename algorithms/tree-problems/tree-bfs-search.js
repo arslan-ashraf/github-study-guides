@@ -27,3 +27,10 @@ five.right = six
 four.left = one
 
 nine.left = eight
+
+//					7
+//			5				9
+//		4		6		8
+//	 1
+
+console.log(tree_bfs_search(seven))
