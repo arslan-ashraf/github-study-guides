@@ -1,9 +1,3 @@
-function TreeNode(value){
-	this.value = value
-	this.left = null
-	this.right = null
-}
-
 function is_valid_binary_tree(tree_node){
 	return in_order_traversal(tree_node, -1/0, 1/0)
 }
@@ -22,6 +16,12 @@ function in_order_traversal(tree_node, lower_bound, upper_bound){
 	}
 }
 
+
+function TreeNode(value){
+	this.value = value
+	this.left = null
+	this.right = null
+}
 
 let one = new TreeNode(1)
 let four = new TreeNode(4)
