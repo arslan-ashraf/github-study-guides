@@ -8,13 +8,17 @@ function tree_bfs_search(tree_node){
 		if (current_node == "#"){
 			current_node = queue.shift()
 			result.push([])
-			result.push(current_node.value)
 			queue.push("#")
 		}
 
-		
+		result[result.length - 1].push(current_node.value)
+
+		if (current_node.left) queue.push(current_node.left)
+		if (current_node.right) queue.push(current_node.right)
 
 	}
+
+	return result
 }
 
 
