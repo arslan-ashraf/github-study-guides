@@ -28,9 +28,11 @@ function flatten_binary_tree_to_linked_list_preorder_iterative(root_node){
 		// find bottom right most node on left subtree
 		if (current_node.left != null){
 
-			let previous_node = current_node.left
-			while(previous_node.right != null){ previous_node = previous_node.right }
-			previous_node.right = current_node.right
+			let bottom_right_node = current_node.left
+			while(bottom_right_node.right != null){ bottom_right_node = bottom_right_node.right }
+
+			// point bottom right most node's right pointer to current_node's right subtree
+			bottom_right_node.right = current_node.right
 
 			current_node.right = current_node.left
 			current_node.left = null
