@@ -1,10 +1,3 @@
-function TreeNode(value){
-	this.value = value
-	this.left = null
-	this.right = null
-}
-
-
 let preorder_index = 0
 
 function construct_binary_tree_from_preorder_and_inorder_traversal(
@@ -46,6 +39,13 @@ function build_tree(
 
 	return current_node
 
+}
+
+
+function TreeNode(value){
+	this.value = value
+	this.left = null
+	this.right = null
 }
 
 
