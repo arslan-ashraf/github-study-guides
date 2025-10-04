@@ -3,7 +3,7 @@ function tree_bfs_search(tree_node){
 	let result = []
 
 	while (queue.length > 0){
-		console.log(queue)
+		
 		let current_node = queue.shift()
 
 		if (current_node == "#"){
@@ -11,6 +11,8 @@ function tree_bfs_search(tree_node){
 			result.push([])
 			queue.push("#")
 		}
+
+		console.log(queue)
 
 		result[result.length - 1].push(current_node.value)
 
