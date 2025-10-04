@@ -1,9 +1,3 @@
-function TreeNode(value){
-	this.value = value
-	this.left = null
-	this.right = null
-}
-
 function bfs_with_dfs(tree_node){
 	let result = []
 	let current_level = 0
@@ -19,6 +13,13 @@ function pre_order_traversal(tree_node, current_level, result){
 
 	pre_order_traversal(tree_node.left, current_level + 1, result)
 	pre_order_traversal(tree_node.right, current_level + 1, result)
+}
+
+
+function TreeNode(value){
+	this.value = value
+	this.left = null
+	this.right = null
 }
 
 let one = new TreeNode(1)
