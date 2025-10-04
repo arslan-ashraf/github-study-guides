@@ -19,10 +19,13 @@ function flatten(current_tree_node){
 
 
 
+// most efficient
 function flatten_binary_tree_to_linked_list_preorder_iterative(root_node){
 	let current_node = root_node
+
 	while (current_node != null){
 
+		// find bottom right most node on left subtree
 		if (current_node.left != null){
 
 			let previous_node = current_node.left
