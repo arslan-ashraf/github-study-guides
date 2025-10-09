@@ -1,6 +1,14 @@
 function smallest_string_starting_from_leaf(tree_node){
+	let result = ""
+	let current_path = []
 
+	preorder_dfs(tree_node, current_path, result)
+
+	return result
 }
+
+function preorder_dfs(tree_node, current_path, result)
+
 
 function TreeNode(value){
 	this.value = value
