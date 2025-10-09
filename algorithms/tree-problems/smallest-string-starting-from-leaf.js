@@ -7,7 +7,27 @@ function smallest_string_starting_from_leaf(tree_node){
 	return result
 }
 
-function preorder_dfs(tree_node, current_path, result)
+function preorder_dfs(tree_node, current_path, result){
+	if (tree_node == null) return
+
+	current_path.push(String.fromCharCode('a'.charCodeAt() + tree_node.value))
+
+	if (tree_node.left == null && tree_node.right == null){
+		let leaf_to_root_path = current_path.slice().reverse().join('')
+
+		if (result == "" || leaf_to_root_path < result){
+			result = leaf_to_root_path
+		}
+	}
+
+	result = preorder_dfs(tree_node.left, current_path, result)
+
+	result = preorder_dfs(tree_node.right, current_path, result)
+
+	current_path.pop()
+
+	return result
+}
 
 
 function TreeNode(value){
@@ -45,3 +65,5 @@ one.left = zero_second
 //			24				6
 //		23		5		4		1
 //	 		  0				  0
+
+console.log(smallest_string_starting_from_leaf(twenty_five))
