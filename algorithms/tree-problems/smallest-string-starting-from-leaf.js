@@ -1,5 +1,5 @@
 function smallest_string_starting_from_leaf(tree_node){
-	let result = ""
+	let result = "{"	// "{" has ascii code 123, larger than "z"
 	let current_path = []
 
 	result = preorder_dfs(tree_node, current_path, result)
@@ -19,9 +19,11 @@ function preorder_dfs(tree_node, current_path, result){
 		
 		let leaf_to_root_path = current_path.reverse().join('')
 
-		if (result == "" || leaf_to_root_path < result){
+		// if (result == "" || leaf_to_root_path < result){  // if result is defined as ""
+		if (leaf_to_root_path < result){
 			result = leaf_to_root_path
 		}
+
 	}
 
 	result = preorder_dfs(tree_node.left, current_path, result)
