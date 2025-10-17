@@ -2,18 +2,22 @@ function smallest_string_starting_from_leaf(tree_node){
 	let result = ""
 	let current_path = []
 
-	preorder_dfs(tree_node, current_path, result)
+	result = preorder_dfs(tree_node, current_path, result)
 
 	return result
 }
 
 function preorder_dfs(tree_node, current_path, result){
-	if (tree_node == null) return
+	if (tree_node == null) return result
 
-	current_path.push(String.fromCharCode('a'.charCodeAt() + tree_node.value))
+	let start_ascii_code = 'a'.charCodeAt()
+	let current_node_ascii_code = String.fromCharCode(start_ascii_code + tree_node.value)
+	
+	current_path.push(current_node_ascii_code)
 
 	if (tree_node.left == null && tree_node.right == null){
-		let leaf_to_root_path = current_path.slice().reverse().join('')
+		console.log(current_path)
+		let leaf_to_root_path = current_path.reverse().join('')
 
 		if (result == "" || leaf_to_root_path < result){
 			result = leaf_to_root_path
@@ -66,4 +70,4 @@ one.left = zero_second
 //		23		5		4		1
 //	 		  0				  0
 
-console.log(smallest_string_starting_from_leaf(twenty_five))
+console.log(smallest_string_starting_from_leaf(twenty_five) == "abge")
