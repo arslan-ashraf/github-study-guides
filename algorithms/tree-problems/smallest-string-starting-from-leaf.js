@@ -16,7 +16,7 @@ function preorder_dfs(tree_node, current_path, result){
 	current_path.push(current_node_ascii_code)
 
 	if (tree_node.left == null && tree_node.right == null){
-		console.log(current_path)
+		
 		let leaf_to_root_path = current_path.reverse().join('')
 
 		if (result == "" || leaf_to_root_path < result){
