@@ -19,7 +19,9 @@ function preorder_dfs(tree_node, current_path, result){
 		
 		let leaf_to_root_path = current_path.reverse().join('')
 
-		// if (result == "" || leaf_to_root_path < result){  // if result is defined as ""
+		// if result at the top is defined as ""
+		// if (result == "" || leaf_to_root_path < result){
+		
 		if (leaf_to_root_path < result){
 			result = leaf_to_root_path
 		}
