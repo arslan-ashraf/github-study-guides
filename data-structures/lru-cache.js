@@ -20,8 +20,8 @@ class LRUCache {
     get(key) {
         if (this.map.has(key)) {
             const node = this.map.get(key)
-            this._remove(node)
-            this._add(node)
+            this.remove(node)
+            this.add_to_front(node)
             return node.value
         }
         return -1
@@ -29,30 +29,30 @@ class LRUCache {
 
     put(key, value) {
         if (this.map.has(key)) {
-            this._remove(this.map.get(key))
+            this.remove(this.map.get(key))
         }
         
-        const newNode = new Node(key, value)
-        this._add(newNode)
-        this.map.set(key, newNode)
+        const node = new Node(key, value)
+        this.add_to_front(node)
+        this.map.set(key, node)
 
         if (this.map.size > this.capacity) {
-            const lru = this.tail.previous
-            this._remove(lru)
-            this.map.delete(lru.key)
+            const lru_node = this.tail.previous
+            this.remove(lru_node)
+            this.map.delete(lru_node.key)
         }
     }
 
-    _remove(node) {
+    remove(node) {
         node.previous.next = node.next
         node.next.previous = node.previous
     }
 
-    _add(node) {
-        const headNext = this.head.next
+    add_to_front(node) {
+        const head_next = this.head.next
         this.head.next = node
         node.previous = this.head
-        node.next = headNext
-        headNext.previous = node
+        node.next = head_next
+        head_next.previous = node
     }
 }
