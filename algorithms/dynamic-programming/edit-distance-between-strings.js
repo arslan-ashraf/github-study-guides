@@ -3,14 +3,15 @@ function edit_distance_between_strings_backtracking(string, pattern){
 }
 
 function backtracking(string, pattern, memo, i, j){
-	if (memo[String(i) + "," + String(j)]) return memo[String(i) + "," + String(j)]
+	let cache_key = String(i) + "," + String(j)
+	if (memo[cache_key] != undefined) return memo[cache_key]
 	if (i == string.length && j == pattern.length) return 0
 	if (i == string.length && j < pattern.length) return pattern.length - j
 	if (i < string.length && j == pattern.length) return string.length - i
 
 	if (string[i] == pattern[j]){
 		let matched_character = backtracking(string, pattern, memo, i + 1, j + 1)
-		memo[String(i) + "," + String(j)] = matched_character
+		memo[cache_key] = matched_character
 		return matched_character
 	} else {
 
@@ -22,7 +23,7 @@ function backtracking(string, pattern, memo, i, j){
 
 		let minimum_edit_distance = Math.min(modify_character, delete_character, insert_character) + 1
 		
-		memo[String(i) + "," + String(j)] = minimum_edit_distance
+		memo[cache_key] = minimum_edit_distance
 		return minimum_edit_distance
 	}
 }
