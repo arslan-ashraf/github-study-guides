@@ -2,28 +2,28 @@ function edit_distance_between_strings_backtracking(string, pattern){
 	return backtracking(string, pattern, {}, 0, 0)
 }
 
-function backtracking(string, pattern, memo, i, j){
+function backtracking(string, pattern, cache, i, j){
 	let cache_key = String(i) + "," + String(j)
-	if (memo[cache_key] != undefined) return memo[cache_key]
+	if (cache[cache_key] != undefined) return cache[cache_key]
 	if (i == string.length && j == pattern.length) return 0
 	if (i == string.length && j < pattern.length) return pattern.length - j
 	if (i < string.length && j == pattern.length) return string.length - i
 
 	if (string[i] == pattern[j]){
-		let matched_character = backtracking(string, pattern, memo, i + 1, j + 1)
-		memo[cache_key] = matched_character
+		let matched_character = backtracking(string, pattern, cache, i + 1, j + 1)
+		cache[cache_key] = matched_character
 		return matched_character
 	} else {
 
-		let modify_character = backtracking(string, pattern, memo, i + 1, j + 1)
+		let modify_character = backtracking(string, pattern, cache, i + 1, j + 1)
 
-		let delete_character = backtracking(string, pattern, memo, i + 1, j)
+		let delete_character = backtracking(string, pattern, cache, i + 1, j)
 		
-		let insert_character = backtracking(string, pattern, memo, i, j + 1)
+		let insert_character = backtracking(string, pattern, cache, i, j + 1)
 
 		let minimum_edit_distance = Math.min(modify_character, delete_character, insert_character) + 1
 		
-		memo[cache_key] = minimum_edit_distance
+		cache[cache_key] = minimum_edit_distance
 		return minimum_edit_distance
 	}
 }
