@@ -15,12 +15,14 @@ function backtracking_dfs(prices, transactions_made, total_transactions, current
 	if (current_state == 0){	// no stock owned, so buy
 
 		let buy_price = prices[current_level]
-		buy_sell_action = backtracking_dfs(prices, transactions_made, total_transactions, 1, current_level + 1) - buy_price
+		let buy_state = 1
+		buy_sell_action = backtracking_dfs(prices, transactions_made, total_transactions, buy_state, current_level + 1) - buy_price
 
 	} else if (current_state == 1){		// stock owned, so sell
 
 		let sell_price = prices[current_level]
-		buy_sell_action = backtracking_dfs(prices, transactions_made + 1, total_transactions, 0, current_level + 1) + sell_price
+		let sell_state = 0
+		buy_sell_action = backtracking_dfs(prices, transactions_made + 1, total_transactions, sell_state, current_level + 1) + sell_price
 
 	}
 
@@ -56,12 +58,14 @@ function backtracking_dfs_memoized(prices, transactions_made, total_transactions
 	if (current_state == 0){	// no stock owned, so buy
 
 		let buy_price = prices[current_level]
-		buy_sell_action = backtracking_dfs_memoized(prices, transactions_made, total_transactions, 1, current_level + 1, cache) - buy_price
+		let buy_state = 1
+		buy_sell_action = backtracking_dfs_memoized(prices, transactions_made, total_transactions, buy_state, current_level + 1, cache) - buy_price
 
 	} else if (current_state == 1){  	// stock owned, so sell
 
 		let sell_price = prices[current_level]
-		buy_sell_action = backtracking_dfs_memoized(prices, transactions_made + 1, total_transactions, 0, current_level + 1, cache) + sell_price
+		let sell_state = 0
+		buy_sell_action = backtracking_dfs_memoized(prices, transactions_made + 1, total_transactions, sell_state, current_level + 1, cache) + sell_price
 
 	}
 
