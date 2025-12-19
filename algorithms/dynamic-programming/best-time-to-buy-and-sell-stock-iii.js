@@ -36,9 +36,8 @@ console.log(best_time_to_buy_and_sell_stock_iii_backtracking([ 3, 3, 5, 0, 0, 3,
 
 
 function best_time_to_buy_and_sell_stock_iii_backtracking_memoized(prices, num_transactions = 2){
-	// 0 = no stock owned, 1 = stock owned
 	let transactions_made = 0
-	let current_state = 0
+	let current_state = 0		// 0 = no stock owned, 1 = stock owned
 	let current_level = 0
 	let cache = {}
 	return backtracking_dfs_memoized(prices, transactions_made, num_transactions, current_state, current_level, cache)
