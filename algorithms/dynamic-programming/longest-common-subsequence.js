@@ -21,10 +21,10 @@ function backtrack(str_a, str_b, cache, i, j){
 
 		let left_remaining_match = backtrack(str_a, str_b, cache, i + 1, j)
 		let right_remaining_match = backtrack(str_a, str_b, cache, i, j + 1)
-		let largest_matching = Math.max(left_remaining_match, right_remaining_match)
+		let largest_matching_subsequence = Math.max(left_remaining_match, right_remaining_match)
 		
-		cache[cache_key] = largest_matching
-		return largest_matching
+		cache[cache_key] = largest_matching_subsequence
+		return largest_matching_subsequence
 
 	}
 
