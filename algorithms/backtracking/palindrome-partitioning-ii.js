@@ -20,7 +20,7 @@ function palindrome_partitioning_ii(str){
 	// part 2, dynamic programming
 	let minimum_cut_count = new Array(n)
 
-	// base case, if each letter is unique, then we require n - 1 cuts
+	// worst case, if each letter is unique, then we require n - 1 cuts
 	for (let i = 0; i < n; i++){ minimum_cut_count[i] = i /* base case */ }
 
 	// the matrix traversal here is column wise not row wise
